@@ -17,7 +17,6 @@ app.get('/', function (req, res) {
 })
 
 app.post('/', multipartMiddleware, function(req, res) {
-  "use strict";
   console.log('files', req.files.data.path)
   console.log(os.tmpdir()+"---tempdir")
   let location = path.join(os.tmpdir(), 'upload.webm')
