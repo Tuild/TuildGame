@@ -3,13 +3,25 @@ const multipartMiddleware = multipart()
 const path = require('path')
 const os = require('os')
 const fs = require('fs')
-const ffmpeg = require('fluent-ffmpeg');
-
+const ffmpeg = require('fluent-ffmpeg')
+var http = require('http')
+var https = require('https')
 var express = require('express')
 var app = express()
+var config = ('./config')
 app.use(express.static('.'))
 
 
+
+
+var privateKey = fs.readFileSync('key.pem','utf8');
+var certtificate = fs.readFileSync('cert.pem','utf8');
+var credentials = {key: privateKey, cert: certtificate};
+var express = require('express')
+
+//var httpsServer = https.createServer(credentials,app);
+
+//var port = process.env.PORT || config.app.port;
 
 
 app.get('/', function (req, res) {
@@ -52,8 +64,5 @@ app.get('/ffmpeg-test',function(req,res){
     res.redirect('/Users/hindupurkedar/Desktop/game/gametest.mp4');
 
 })
-
-
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})
+http.createServer(app).listen(8080);
+https.createServer(credentials, app).listen(8443);

@@ -45,3 +45,7 @@ canvas {
   visibility: hidden;
 }
 
+body:after {
+  content: url(1.gif) url(2.gif) url(3.gif) url(4.gif) url(5.gif) url(6.gif) url(7.gif) url(8.gif) url(9.gif) url(10.gif);
+  display: none; 
+}
