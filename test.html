@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="testgame.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+    width:100%;
+}
+</style>
+</head>
+
+
+
+<body onload="startGame()">
+
+<video style = "float:right"></video>
+
+<input class="invis" id="record" type="button" value="record" />
+<input class="invis" id="stop" type="button" value="stop" />
+
+<div id="wrapper">
+         <button class="btn" onclick="hide()">Play</button>
+      </div>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+  <script src="testGame.js"></script>
+ 
+
+ 
+
+
+</body>
+</html>
