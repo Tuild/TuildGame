@@ -110,7 +110,7 @@ function updateGameArea() {
     myGameArea.clear();
     myGamePiece.newPos();
 
-    if(myGamePiece.x>=window.innerWidth){
+    if(myGamePiece.x>=1300){
       
         var d = new Date();
         console.log(Math.round((d.getTime()-mainTime)/1000));
