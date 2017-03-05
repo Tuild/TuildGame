@@ -38,7 +38,7 @@ app.post('/', multipartMiddleware, function(req, res) {
   console.log(os.tmpdir()+"---tempdir")
   var location = path.join(os.tmpdir(), 'upload.webm')
   fs.rename(req.files.data.path, location)
-  console.log(`upload successful, file written to ${location}`)
+  console.log("FIle location "+ location);
   res.send('upload successful, file written to ${location}')
 })
 
