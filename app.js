@@ -14,10 +14,15 @@ app.use(express.static('.'))
 
 
 
-var privateKey = fs.readFileSync('key.pem','utf8');
-var certtificate = fs.readFileSync('cert.pem','utf8');
-var credentials = {key: privateKey, cert: certtificate};
+// var privateKey = fs.readFileSync('key.pem','utf8');
+// var certtificate = fs.readFileSync('cert.pem','utf8');
+// var credentials = {key: privateKey, cert: certtificate};
 var express = require('express')
+var options = { 
+    key: fs.readFileSync('server-key.pem'), 
+    cert: fs.readFileSync('server-crt.pem'), 
+    ca: fs.readFileSync('ca-crt.pem'), 
+}; 
 
 //var httpsServer = https.createServer(credentials,app);
 
@@ -64,5 +69,7 @@ app.get('/ffmpeg-test',function(req,res){
     res.redirect('/Users/hindupurkedar/Desktop/game/gametest.mp4');
 
 })
-http.createServer(app).listen(8080);
-https.createServer(credentials, app).listen(8443);
+// http.createServer(app).listen(80);
+// https.createServer(credentials, app).listen(443);
+https.createServer(options, app).listen(4433);
+console.log("This is data");
