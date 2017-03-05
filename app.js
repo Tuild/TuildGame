@@ -67,7 +67,9 @@ app.get('/ffmpeg-test',function(req,res){
 
     }).run();
 
+    console.log(op);
     res.sendStatus(200);
+
 
 })
 // http.createServer(app).listen(80);
