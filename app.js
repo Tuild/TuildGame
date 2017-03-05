@@ -63,12 +63,13 @@ app.get('/ffmpeg-test',function(req,res){
 
     })
     .on('error', function(err){
+      console.log(op);
         console.log('error: ', +err);
 
     }).run();
 
-    console.log(op);
-    res.sendStatus(200);
+    
+    //res.sendStatus(200);
 
 
 })
