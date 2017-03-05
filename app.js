@@ -45,7 +45,7 @@ app.post('/', multipartMiddleware, function(req, res) {
 app.get('/ffmpeg-test',function(req,res){
 
   var loc = path.join(os.tempdir(),'upload.webm');
-  var op = path,join(os.tempdir(),'gametest.mp4');
+  var op = path.join(os.tempdir(),'gametest.mp4');
 	ffmpeg(loc) //Input Video File
     .output(op) // Output File
     .audioCodec('libmp3lame') // Audio Codec
