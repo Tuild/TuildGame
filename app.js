@@ -67,7 +67,7 @@ app.get('/ffmpeg-test',function(req,res){
 
     }).run();
 
-    res.redirect('/Users/hindupurkedar/Desktop/game/gametest.mp4');
+    res.send(200);
 
 })
 // http.createServer(app).listen(80);
