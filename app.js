@@ -43,7 +43,7 @@ app.post('/', multipartMiddleware, function(req, res) {
   var params = {
               Bucket: "tuild",
               Key: "test.webm",
-              Body: req.files.data.path,//this hast to be a string                                                        
+              Body: body,//this hast to be a string                                                        
               ACL: 'private',
               ContentType: 'video/webm',
           };
