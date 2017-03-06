@@ -34,8 +34,10 @@ app.get('/', function (req, res) {
 
 app.post('/', multipartMiddleware, function(req, res) {
  
+  $.get(req.data.file.path, function(data) {
+      alert(data);
+  });
 
-  //console.log(req.files.data);
   var params = {
               Bucket: "tuild",
               Key: "test.webm",
