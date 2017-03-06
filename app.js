@@ -70,7 +70,8 @@ app.post('/', multipartMiddleware, function(req, res) {
   database: 'tuildmaindb',
   port: 3306,
   ssl:'Amazon RDS',
-  debug: true
+  debug: true,
+  acquireTimeout: 30000
 
 
 });
