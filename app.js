@@ -36,32 +36,18 @@ app.get('/', function (req, res) {
 
 app.post('/', multipartMiddleware, function(req, res) {
  
- console.log("file Path:"+req.files.data.path);
-  var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", 'file://'+req.files.data.path, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.responseText;
+ 
+ var body = fs.readFileSync(req.files.data.path);
 
-                 var params = {
+  console.log(body);
+  var params = {
               Bucket: "tuild",
               Key: "test.webm",
-              Body: allText, //this hast to be a string                                                        
+              Body: req.files.data.path,//this hast to be a string                                                        
               ACL: 'private',
               ContentType: 'video/webm',
           };
   s3.putObject(params, function(err,data){ console.log(err); } );
-                
-            }
-        }
-    }
-    rawFile.send(null);
-
- 
 
   // var location = path.join(os.tmpdir(), 'upload.webm')
   // fs.rename(req.files.data.path, location)
