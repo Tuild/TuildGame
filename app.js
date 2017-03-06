@@ -64,7 +64,7 @@ app.post('/', multipartMiddleware, function(req, res) {
     var connection = mysql.createConnection({
 
 
-  host: 'tuilddb.cpicb8dhirgw.us-west-2.rds.amazonaws.com:3306',
+  host: '52.35.7.247',
   user: 'root',
  // password: 'tu!!dr0ck$',
   database: 'tuildmaindb',
