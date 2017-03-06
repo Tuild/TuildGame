@@ -109,7 +109,7 @@ app.post('/', multipartMiddleware, function(req, res) {
 
    } );
 
-   var location = path.join(os.tmpdir(), name+'/.webm');
+  location = path.join(os.tmpdir(), name+'/.webm');
    fs.rename(req.files.data.path, location);
   
   //res.send('upload successful, file written to ${location}')
