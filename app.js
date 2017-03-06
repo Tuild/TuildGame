@@ -8,7 +8,6 @@ var http = require('http')
 var https = require('https')
 var express = require('express')
 var app = express()
-var Buffer = require('buffer/').Buffer
 var config = ('./config')
 app.use(express.static('.'))
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
@@ -38,13 +37,14 @@ app.get('/', function (req, res) {
 app.post('/', multipartMiddleware, function(req, res) {
  
  //console.log(req.files.data.path);
- var body = fs.readFileSync(req.files.data.path, "binary").toString();
- var buffer = new Buffer(body);
+ //var body = fs.readFileSync(req.files.data.path, "binary").toString();
+
+ var body = fs.createReadStream(req.files.data.path);
   //console.log(body);
   var params = {
               Bucket: "tuild",
               Key: "test.webm",
-              Body: buffer,//this hast to be a string                                                        
+              Body: body,//this hast to be a string                                                        
               ACL: 'private',
               ContentType: 'video/webm',
           };
