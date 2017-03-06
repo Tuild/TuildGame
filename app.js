@@ -33,12 +33,22 @@ app.get('/', function (req, res) {
 })
 
 app.post('/', multipartMiddleware, function(req, res) {
-  console.log('files', req.files.data.path)
-  console.log(os.tmpdir()+"---tempdir")
-  var location = path.join(os.tmpdir(), 'upload.webm')
-  fs.rename(req.files.data.path, location)
-  console.log("FIle location "+ location);
-  res.send('upload successful, file written to ${location}')
+ 
+
+  console.log(req.files.data);
+  var params = {
+              Bucket: "UploadsTuild",
+              Key: "test.webm",
+              Body: req.files.data,//this hast to be a string                                                        
+              ACL: 'private',
+              ContentType: 'video/webm',
+          };
+  s3.putObject(params, function(err,data){ console.log(err); } );
+
+  // var location = path.join(os.tmpdir(), 'upload.webm')
+  // fs.rename(req.files.data.path, location)
+  
+  //res.send('upload successful, file written to ${location}')
 })
 
 app.get('/ffmpeg-test',function(req,res){
