@@ -71,11 +71,11 @@ app.post('/', multipartMiddleware, function(req, res) {
 
     connection.connect();
 
-  connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,"testarray","testtimestamp")',[name], function(err, rows, fields) {
+  connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,"","testarray","testtimestamp")', function(err, rows, fields) {
   
 
   if(err)
-    console.log('Error while performing Query.');
+    console.log(err);
 
 
 });
