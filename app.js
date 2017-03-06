@@ -37,7 +37,7 @@ app.post('/', multipartMiddleware, function(req, res) {
 
   //console.log(req.files.data);
   var params = {
-              Bucket: "UploadsTuild",
+              Bucket: "tuild",
               Key: "test.webm",
               Body: req.files.data.path,//this hast to be a string                                                        
               ACL: 'private',
