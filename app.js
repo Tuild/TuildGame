@@ -34,7 +34,8 @@ var connection = mysql.createConnection({
   host: 'tuilddb.cpicb8dhirgw.us-west-2.rds.amazonaws.com',
   user: 'root',
   password: 'tu!!dr0ck$',
-  database: 'tuildmaindb'
+  database: 'tuildmaindb',
+  port: 3306
 
 
 });
@@ -69,7 +70,16 @@ app.post('/', multipartMiddleware, function(req, res) {
           };
   s3.putObject(params, function(err,data){ console.log(err);
 
-    connection.connect();
+    connection.connect(function(err){
+
+      if(err){
+
+        console.log(err);
+      }
+
+
+
+    });
 
   connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,"","testarray","testtimestamp")', function(err, rows, fields) {
   
