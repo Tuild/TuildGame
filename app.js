@@ -46,26 +46,26 @@ app.post('/', multipartMiddleware, function(req, res) {
             if(rawFile.status === 200 || rawFile.status == 0)
             {
                 var allText = rawFile.responseText;
-                console.log(allText);
-            }
-        }
-    }
-    rawFile.send(null);
-
-  var params = {
+                  var params = {
               Bucket: "tuild",
               Key: "test.webm",
-              Body: req.files.data.path,//this hast to be a string                                                        
+              Body: allText,//this hast to be a string                                                        
               ACL: 'private',
               ContentType: 'video/webm',
           };
-  s3.putObject(params, function(err,data){ console.log(err); } );
+        s3.putObject(params, function(err,data){ console.log(err); } );
 
   // var location = path.join(os.tmpdir(), 'upload.webm')
   // fs.rename(req.files.data.path, location)
   
   //res.send('upload successful, file written to ${location}')
 })
+            }
+        }
+    }
+    rawFile.send(null);
+
+
 
 app.get('/ffmpeg-test',function(req,res){
 
