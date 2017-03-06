@@ -66,12 +66,11 @@ app.post('/', multipartMiddleware, function(req, res) {
 
   host: 'tuilddb.cpicb8dhirgw.us-west-2.rds.amazonaws.com',
   user: 'root',
-  password: 'tu!!dr0ck$',
+ // password: 'tu!!dr0ck$',
   database: 'tuildmaindb',
   port: 3306,
   ssl:'Amazon RDS',
   debug: true,
-  connectTimeout: 30000
 
 
 });
