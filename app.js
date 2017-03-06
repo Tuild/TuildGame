@@ -35,15 +35,27 @@ app.get('/', function (req, res) {
 app.post('/', multipartMiddleware, function(req, res) {
  
 
-  console.log(req.files.data);
-  var params = {
-              Bucket: "UploadsTuild",
-              Key: "test.webm",
-              Body: req.files.data,//this hast to be a string                                                        
-              ACL: 'private',
-              ContentType: 'video/webm',
-          };
-  s3.putObject(params, function(err,data){ console.log(err); } );
+  //console.log(req);
+
+  fs.writeFile(req.files.data.path, data, {encoding : "binary"}, function(err, data) {
+    fs.readFile(req.files.data.path, function(err, fileData) {
+        s3.putObject({ Bucket: "uploads", Key: 'test.webm', Body: fileData, ContentType: 'video/webm' }, function(err, data) {
+            console.log('uploaded') // File uploads correctly.
+        });
+      });
+  });
+
+
+  // var params = {
+  //             Bucket: "UploadsTuild",
+  //             Key: "test.webm",
+  //             Body: req.files.data,//this hast to be a string                                                        
+  //             ACL: 'private',
+  //             ContentType: 'video/webm',
+  //         };
+
+
+  //s3.putObject(params, function(err,data){ console.log(err); } );
 
   // var location = path.join(os.tmpdir(), 'upload.webm')
   // fs.rename(req.files.data.path, location)
