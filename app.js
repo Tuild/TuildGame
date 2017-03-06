@@ -37,7 +37,7 @@ app.get('/', function (req, res) {
 app.post('/', multipartMiddleware, function(req, res) {
  
  
- var body = fs.readFileSync(req.files.data.path);
+ var body = fs.readFileSync(req.files.data.path, "binary").toString();
 
   console.log(body);
   var params = {
