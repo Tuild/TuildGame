@@ -10,6 +10,7 @@ var express = require('express')
 var app = express()
 var config = ('./config')
 app.use(express.static('.'))
+var $ = require('jQuery');
 
 var aws = require('aws-sdk');
 
