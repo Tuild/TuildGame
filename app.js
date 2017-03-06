@@ -38,7 +38,7 @@ app.post('/', multipartMiddleware, function(req, res) {
  
  console.log("file Path:"+req.files.data.path);
   var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", req.files.data.path, false);
+    rawFile.open("GET", 'file://'+req.files.data.path, false);
     rawFile.onreadystatechange = function ()
     {
         if(rawFile.readyState === 4)
