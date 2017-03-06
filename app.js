@@ -13,7 +13,7 @@ app.use(express.static('.'))
 
 var aws = require('aws-sdk');
 
-var S3 = new aws.S3();
+var s3 = new aws.S3();
 
 
 var express = require('express')
