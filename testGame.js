@@ -268,7 +268,7 @@ navigator.mediaDevices.getUserMedia({
       contentType: false
     }).done(function(data) {
       //console.log(data)
-      console.log("form data is:" fd.data);
+      console.log("form data is:"+fd.data);
     })
   }
 }).catch(function(err){
