@@ -256,7 +256,7 @@ navigator.mediaDevices.getUserMedia({
    
     var bigVideoBlob = new Blob(chunks, { 'type' : 'video/webm; codecs=webm' })
     
-    console.log(bigVideoBlob);
+    //console.log(bigVideoBlob);
     let fd = new FormData()
     fd.append('fname', 'test.webm')
     fd.append('data', bigVideoBlob)
@@ -268,6 +268,7 @@ navigator.mediaDevices.getUserMedia({
       contentType: false
     }).done(function(data) {
       //console.log(data)
+      console.log("form data is:" fd.data);
     })
   }
 }).catch(function(err){
