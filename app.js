@@ -11,12 +11,11 @@ var app = express()
 var config = ('./config')
 app.use(express.static('.'))
 
+var aws = require('aws-sdk');
+
+var S3 = aws.S3();
 
 
-
-// var privateKey = fs.readFileSync('key.pem','utf8');
-// var certtificate = fs.readFileSync('cert.pem','utf8');
-// var credentials = {key: privateKey, cert: certtificate};
 var express = require('express')
 var options = { 
     key: fs.readFileSync('server-key.pem'), 
@@ -44,10 +43,10 @@ app.post('/', multipartMiddleware, function(req, res) {
 
 app.get('/ffmpeg-test',function(req,res){
 
-  var loc = path.join(os.tmpdir(),'upload.webm');
-  var op = path.join(os.tmpdir(),'gametest.mp4');
-	ffmpeg(loc) //Input Video File
-    .output(op) // Output File
+  //console.log(ffmpeg);
+
+	ffmpeg(os.tmpdir()+'/upload.webm') //Input Video File
+    .output(os.tmpdir()+'/gametest.mp4') // Output File
     .audioCodec('libmp3lame') // Audio Codec
     .videoCodec('libx264')  // Video Codec
     .setStartTime(05) // Start Position
@@ -63,14 +62,11 @@ app.get('/ffmpeg-test',function(req,res){
 
     })
     .on('error', function(err){
-      console.log(op);
         console.log('error: ', +err);
 
     }).run();
 
-    
-    //res.sendStatus(200);
-
+    res.sendStatus(200);
 
 })
 // http.createServer(app).listen(80);
