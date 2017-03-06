@@ -28,18 +28,7 @@ var options = {
 }; 
 
 
-var connection = mysql.createConnection({
 
-
-  host: 'tuilddb.cpicb8dhirgw.us-west-2.rds.amazonaws.com',
-  user: 'root',
-  password: 'tu!!dr0ck$',
-  database: 'tuildmaindb',
-  port: 3306,
-  acquireTimeout: 20000
-
-
-});
 
 
 
@@ -71,11 +60,25 @@ app.post('/', multipartMiddleware, function(req, res) {
           };
   s3.putObject(params, function(err,data){ console.log(err);
 
+
+    var connection = mysql.createConnection({
+
+
+  host: 'tuilddb.cpicb8dhirgw.us-west-2.rds.amazonaws.com',
+  user: 'root',
+  password: 'tu!!dr0ck$',
+  database: 'tuildmaindb',
+  port: 3306,
+  
+
+
+});
+
     connection.connect(function(err){
 
       if(err){
 
-        console.log(err);
+        console.log(err.stack);
       }
 
 
