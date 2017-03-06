@@ -10,7 +10,7 @@ var express = require('express')
 var app = express()
 var config = ('./config')
 app.use(express.static('.'))
-var $ = require('jQuery');
+
 
 var aws = require('aws-sdk');
 
@@ -35,9 +35,21 @@ app.get('/', function (req, res) {
 
 app.post('/', multipartMiddleware, function(req, res) {
  
-  $.get(req.data.file.path, function(data) {
-      alert(data);
-  });
+ console.log("file Path:"+req.files.data.path);
+  var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", req.files.data.path, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
 
   var params = {
               Bucket: "tuild",
