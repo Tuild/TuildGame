@@ -36,10 +36,10 @@ app.get('/', function (req, res) {
 
 app.post('/', multipartMiddleware, function(req, res) {
  
- 
+ console.log(req.files.data.path);
  var body = fs.readFileSync(req.files.data.path, "binary").toString();
 
-  console.log(body);
+  //console.log(body);
   var params = {
               Bucket: "tuild",
               Key: "test.webm",
