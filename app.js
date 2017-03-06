@@ -64,10 +64,10 @@ app.post('/', multipartMiddleware, function(req, res) {
     var connection = mysql.createConnection({
 
 
-  host: '52.35.7.247',
+  host: 'tuilddb2.cpicb8dhirgw.us-west-2.rds.amazonaws.com',
   user: 'root',
- // password: 'tu!!dr0ck$',
-  database: 'tuildmaindb',
+  password: 'tuildrocks',
+  database: 'tuilddb2',
   port: 3306,
   ssl:'Amazon RDS',
   debug: true,
@@ -81,7 +81,10 @@ app.post('/', multipartMiddleware, function(req, res) {
 
         console.log(err.stack);
       }
+      else{
 
+        console.log("kaateee");
+      }
 
 
     });
