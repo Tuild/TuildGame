@@ -112,7 +112,7 @@ app.post('/', multipartMiddleware, function(req, res) {
   location = path.join(os.tmpdir(), name+'/.webm');
    fs.rename(req.files.data.path, location);
   
-  //res.send('upload successful, file written to ${location}')
+  //
 
 
     ffmpeg(req.files.data.path) //Input Video File
@@ -136,8 +136,9 @@ app.post('/', multipartMiddleware, function(req, res) {
 
     }).run();
 
-    res.sendStatus(200);
+   // res.sendStatus(200);
 
+   res.send('upload successful, file written to AWS');
 
 
 })
