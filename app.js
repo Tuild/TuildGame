@@ -40,13 +40,15 @@ app.post('/', multipartMiddleware, function(req, res) {
  //var body = fs.readFileSync(req.files.data.path, "binary").toString();
 
  var body = fs.createReadStream(req.files.data.path);
+  var size = fs.statSync(req.files.data.path).size;
+
   console.log(body);
   var params = {
               Bucket: "tuild",
               Key: "test.webm",
-              Body: body,//this hast to be a string                                                        
-              ACL: 'private',
+              Body: body,//this hast to be a string                                                       
               ContentType: 'video/webm',
+              ContentLength : size,
           };
   s3.putObject(params, function(err,data){ console.log(err); } );
 
