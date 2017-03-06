@@ -113,7 +113,7 @@ function updateGameArea() {
     if(myGamePiece.x>=1300){
       
         var d = new Date();
-        console.log(Math.round((d.getTime()-mainTime)/1000));
+        //console.log(Math.round((d.getTime()-mainTime)/1000));
         setTimeout(setx(),1000);
         alreadyHit = false;
         noofBalls++;
