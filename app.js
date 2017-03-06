@@ -84,7 +84,7 @@ app.post('/', multipartMiddleware, function(req, res) {
 
       if(err){
 
-        console.log(err.stack);
+        console.log(err);
       }
       else{
 
