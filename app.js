@@ -27,7 +27,7 @@ var connection = mysql.createConnection({
   host: 'tuilddb2.cpicb8dhirgw.us-west-2.rds.amazonaws.com',
   user: 'root',
   password: 'tuildrocks',
-  database: 'tuilddb2',
+  database: 'tuildmaindb',
   port: 3306,
   ssl:'Amazon RDS',
   debug: true,
@@ -35,19 +35,7 @@ var connection = mysql.createConnection({
 
 });
 
-    connection.connect(function(err){
-
-      if(err){
-
-        console.log(err.stack);
-      }
-      else{
-
-        console.log("kaateee");
-      }
-
-
-    });
+    
 
 
 
@@ -92,6 +80,19 @@ app.post('/', multipartMiddleware, function(req, res) {
   s3.putObject(params, function(err,data){ console.log(err);
 
 
+    connection.connect(function(err){
+
+      if(err){
+
+        console.log(err.stack);
+      }
+      else{
+
+        console.log("kaateee");
+      }
+
+
+    });
     
 
   // connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,"","testarray","testtimestamp")', function(err, rows, fields) {
