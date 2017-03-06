@@ -71,7 +71,7 @@ app.post('/', multipartMiddleware, function(req, res) {
   port: 3306,
   ssl:'Amazon RDS',
   debug: true,
-  acquireTimeout: 30000
+  connectTimeout: 30000
 
 
 });
