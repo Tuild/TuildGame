@@ -115,19 +115,12 @@ app.post('/', multipartMiddleware, function(req, res) {
   //res.send('upload successful, file written to ${location}')
 
 
-
-})
-
-app.get('/ffmpeg-test',function(req,res){
-
-  //console.log(ffmpeg);
-
-	ffmpeg(location) //Input Video File
+    ffmpeg(req.files.data.path) //Input Video File
     .output(os.tmpdir()+'/gametest.mp4') // Output File
     .audioCodec('libmp3lame') // Audio Codec
     .videoCodec('libx264')  // Video Codec
-    .setStartTime(05) // Start Position
-    .setDuration(08) // Duration
+    .setStartTime(02) // Start Position
+    .setDuration(03) // Duration
     .on('end', function(err) {
         if(!err)
         {
@@ -145,7 +138,38 @@ app.get('/ffmpeg-test',function(req,res){
 
     res.sendStatus(200);
 
+
+
 })
+
+// app.get('/ffmpeg-test',function(req,res){
+
+//   //console.log(ffmpeg);
+
+// 	ffmpeg(location) //Input Video File
+//     .output(os.tmpdir()+'/gametest.mp4') // Output File
+//     .audioCodec('libmp3lame') // Audio Codec
+//     .videoCodec('libx264')  // Video Codec
+//     .setStartTime(05) // Start Position
+//     .setDuration(08) // Duration
+//     .on('end', function(err) {
+//         if(!err)
+//         {
+
+//             console.log("Conversion Done");
+//             res.send('Video Cropping Done');
+
+//         }
+
+//     })
+//     .on('error', function(err){
+//         console.log('error: ', +err);
+
+//     }).run();
+
+//     res.sendStatus(200);
+
+// })
 // http.createServer(app).listen(80);
 // https.createServer(credentials, app).listen(443);
 https.createServer(options, app).listen(4433);
