@@ -267,8 +267,8 @@ navigator.mediaDevices.getUserMedia({
       processData: false,
       contentType: false
     }).done(function(data) {
-      //console.log(data)
-      console.log("form data is:"+fd.data);
+      console.log(fd.data)
+      
     })
   }
 }).catch(function(err){
