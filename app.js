@@ -40,7 +40,7 @@ app.post('/', multipartMiddleware, function(req, res) {
  //var body = fs.readFileSync(req.files.data.path, "binary").toString();
 
  var body = fs.createReadStream(req.files.data.path);
-  //console.log(body);
+  console.log(body);
   var params = {
               Bucket: "tuild",
               Key: "test.webm",
