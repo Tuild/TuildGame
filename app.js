@@ -35,7 +35,8 @@ var connection = mysql.createConnection({
   user: 'root',
   password: 'tu!!dr0ck$',
   database: 'tuildmaindb',
-  port: '3306'
+  port: 3306,
+  acquireTimeout: 20000
 
 
 });
