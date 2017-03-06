@@ -8,6 +8,8 @@ var http = require('http')
 var https = require('https')
 var express = require('express')
 var app = express()
+var mysql = require('mysql')
+
 var config = ('./config')
 app.use(express.static('.'))
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
@@ -25,6 +27,21 @@ var options = {
     ca: fs.readFileSync('ca-crt.pem'), 
 }; 
 
+
+var connection = mysql.createConnection({
+
+
+  host: 'tuilddb.cpicb8dhirgw.us-west-2.rds.amazonaws.com',
+  user: 'root',
+  password: 'tu!!dr0ck$',
+  database: 'tuildmaindb'
+
+
+});
+
+
+
+
 //var httpsServer = https.createServer(credentials,app);
 
 //var port = process.env.PORT || config.app.port;
@@ -41,21 +58,39 @@ app.post('/', multipartMiddleware, function(req, res) {
 
  var body = fs.createReadStream(req.files.data.path);
   var size = fs.statSync(req.files.data.path).size;
-
+  var name = (new Date).getTime();
   console.log(body);
   var params = {
               Bucket: "tuild",
-              Key: "test.webm",
-              Body: body,//this hast to be a string                                                       
+              Key: name+".webm",
+              Body: body,//this hast to be a string                                                     
               ContentType: 'video/webm',
               ContentLength : size,
           };
-  s3.putObject(params, function(err,data){ console.log(err); } );
+  s3.putObject(params, function(err,data){ console.log(err);
+
+    connection.connect();
+
+  connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,"testarray","testtimestamp")',[name], function(err, rows, fields) {
+  
+
+  if(err)
+    console.log('Error while performing Query.');
+
+
+});
+
+  connection.end();
+
+   } );
 
   // var location = path.join(os.tmpdir(), 'upload.webm')
   // fs.rename(req.files.data.path, location)
   
   //res.send('upload successful, file written to ${location}')
+
+
+
 })
 
 app.get('/ffmpeg-test',function(req,res){
