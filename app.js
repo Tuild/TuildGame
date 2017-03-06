@@ -27,7 +27,7 @@ var connection = mysql.createConnection({
   host: 'tuilddb2.cpicb8dhirgw.us-west-2.rds.amazonaws.com',
   user: 'root',
   password: 'tuildrocks',
-  database: 'tuildmaindb',
+  database: 'tuilddb',
   port: 3306,
   ssl:'Amazon RDS',
   debug: true,
