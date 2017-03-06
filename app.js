@@ -18,7 +18,7 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var aws = require('aws-sdk');
 
 var s3 = new aws.S3();
-
+var location;
 
 
 var connection = mysql.createConnection({
@@ -68,7 +68,7 @@ app.post('/', multipartMiddleware, function(req, res) {
 
  var body = fs.createReadStream(req.files.data.path);
   var size = fs.statSync(req.files.data.path).size;
-  var name = (new Date).getTime();
+  name = (new Date).getTime();
   console.log(body);
   var params = {
               Bucket: "tuild",
@@ -88,12 +88,13 @@ app.post('/', multipartMiddleware, function(req, res) {
       }
       else{
 
-        console.log("kaateee");
+        console.log("connection established");
       }
 
 
     });
     
+    connection.end();
 
   // connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,"","testarray","testtimestamp")', function(err, rows, fields) {
   
@@ -108,8 +109,8 @@ app.post('/', multipartMiddleware, function(req, res) {
 
    } );
 
-  // var location = path.join(os.tmpdir(), 'upload.webm')
-  // fs.rename(req.files.data.path, location)
+   var location = path.join(os.tmpdir(), name+'/.webm');
+   fs.rename(req.files.data.path, location);
   
   //res.send('upload successful, file written to ${location}')
 
@@ -121,7 +122,7 @@ app.get('/ffmpeg-test',function(req,res){
 
   //console.log(ffmpeg);
 
-	ffmpeg(os.tmpdir()+'/upload.webm') //Input Video File
+	ffmpeg(location) //Input Video File
     .output(os.tmpdir()+'/gametest.mp4') // Output File
     .audioCodec('libmp3lame') // Audio Codec
     .videoCodec('libx264')  // Video Codec
