@@ -249,15 +249,14 @@ navigator.mediaDevices.getUserMedia({
   }
 
   video.onloadedmetadata = (e) => {
-    console.log('onloadedmetadata', e)
+   
   }
 
   recorder.onstop = (e) => {
-    console.log('e', e)
-    console.log('chunks', chunks)
+   
     var bigVideoBlob = new Blob(chunks, { 'type' : 'video/webm; codecs=webm' })
     
-
+    console.log(bigVideoBlob);
     let fd = new FormData()
     fd.append('fname', 'test.webm')
     fd.append('data', bigVideoBlob)
@@ -268,7 +267,7 @@ navigator.mediaDevices.getUserMedia({
       processData: false,
       contentType: false
     }).done(function(data) {
-      console.log(data)
+      //console.log(data)
     })
   }
 }).catch(function(err){
