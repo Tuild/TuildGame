@@ -49,14 +49,6 @@ var options = {
 
 
 
-
-
-
-//var httpsServer = https.createServer(credentials,app);
-
-//var port = process.env.PORT || config.app.port;
-
-
 app.get('/', function (req, res) {
   res.redirect('/test.html')
 })
@@ -77,7 +69,15 @@ app.post('/', multipartMiddleware, function(req, res) {
               ContentType: 'video/webm',
               ContentLength : size,
           };
-  s3.putObject(params, function(err,data){ console.log(err);
+  s3.putObject(params, function(err,data){ 
+
+
+    if(err){
+
+      console.log("aws error :"+err);
+    }
+
+  });
 
 
     connection.connect(function(err){
@@ -96,7 +96,7 @@ app.post('/', multipartMiddleware, function(req, res) {
     
     
 
-   connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,"testarray","testtimestamp")',[name+".webm"], function(err, rows, fields) {
+   connection.query(('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,"testarray","testtimestamp")',[name+".webm"], function(err, rows, fields) {
   
 
   if(err)
@@ -105,16 +105,30 @@ app.post('/', multipartMiddleware, function(req, res) {
 
 });
 
-  connection.end();
+  connection.end(function(err){
 
-   } );
+
+    if(err){
+
+      console.log("error disconnecting");
+    }
+    else{
+
+      cosole.log("connection Ended");
+    }
+
+  });
+
+
+
+   
 
      location = path.join(os.tmpdir(), name+'/.webm');
      fs.rename(req.files.data.path, location);
 
 
   
-  
+    console.log("after renaming req path :"+req.files.data.path);
 
 
     ffmpeg(req.files.data.path) //Input Video File
@@ -128,7 +142,7 @@ app.post('/', multipartMiddleware, function(req, res) {
         {
 
             console.log("Conversion Done");
-            //res.send('Video Cropping Done');
+            
 
         }
 
@@ -138,12 +152,12 @@ app.post('/', multipartMiddleware, function(req, res) {
 
     }).run();
 
-   // res.sendStatus(200);
+   
 
-   res.send('upload successful, file written to AWS');
+   res.send('everrything ran seemlessly');
 
 
-})
+});
 
 // app.get('/ffmpeg-test',function(req,res){
 
