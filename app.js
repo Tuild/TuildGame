@@ -123,10 +123,6 @@ app.post('/', multipartMiddleware, function(req, res) {
   });
 
 
-  var file_name = os.tmpdir()+'/'+name; 
-  fs.rename(req.files.data.path,name);
-
-  console.log("after rename :"+req.files.data.path);
 
    
 
