@@ -94,25 +94,27 @@ app.post('/', multipartMiddleware, function(req, res) {
 
     });
     
-    connection.end();
+    
 
-  // connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,"","testarray","testtimestamp")', function(err, rows, fields) {
+   connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,"testarray","testtimestamp")',[name+".webm"], function(err, rows, fields) {
   
 
-//   if(err)
-//     console.log(err);
+  if(err)
+    console.log(err);
 
 
-// });
+});
 
-  // connection.end();
+  connection.end();
 
    } );
 
-  location = path.join(os.tmpdir(), name+'/.webm');
-   fs.rename(req.files.data.path, location);
+     location = path.join(os.tmpdir(), name+'/.webm');
+     fs.rename(req.files.data.path, location);
+
+
   
-  //
+  
 
 
     ffmpeg(req.files.data.path) //Input Video File
