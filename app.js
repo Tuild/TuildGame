@@ -58,7 +58,7 @@ app.post('/', multipartMiddleware, function(req, res) {
 
  var body = fs.createReadStream(req.files.data.path);
   var size = fs.statSync(req.files.data.path).size;
-  name = (new Date).getTime();
+   var name = (new Date).getTime();
   //console.log(body);
   var params = {
               Bucket: "tuild",
@@ -127,9 +127,10 @@ app.post('/', multipartMiddleware, function(req, res) {
    
 
 
+    // var outputPath = name
 
     ffmpeg(req.files.data.path) //Input Video File
-    .output(os.tmpdir()+name+'.mp4') // Output File
+    .output(os.tmpdir()+'/gametest.mp4') // Output File
     .audioCodec('libmp3lame') // Audio Codec
     .videoCodec('libx264')  // Video Codec
     .setStartTime(02) // Start Position
