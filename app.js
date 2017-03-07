@@ -123,6 +123,10 @@ app.post('/', multipartMiddleware, function(req, res) {
   });
 
 
+  var file_name = os.tmpdir()+'/'+name; 
+  fs.rename(req.files.data.path,name);
+
+  console.log("after rename :"+req.files.data.path);
 
    
 
@@ -130,7 +134,7 @@ app.post('/', multipartMiddleware, function(req, res) {
     // var outputPath = name
 
     ffmpeg(req.files.data.path) //Input Video File
-    .output(os.tmpdir()+name+'.mp4') // Output File
+    .output(os.tmpdir()+'/'+name+'.mp4') // Output File
     .audioCodec('libmp3lame') // Audio Codec
     .videoCodec('libx264')  // Video Codec
     .setStartTime(02) // Start Position
