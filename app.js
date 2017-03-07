@@ -96,14 +96,14 @@ app.post('/', multipartMiddleware, function(req, res) {
     
     
 
-   connection.query(('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,"testarray","testtimestamp")',[name+".webm"], function(err, rows, fields) {
+   connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,"testarray","testtimestamp")',[name+".webm"], function(err, rows, fields) {
   
 
   if(err)
     console.log(err);
 
 
-})
+});
 
   connection.end(function(err){
 
