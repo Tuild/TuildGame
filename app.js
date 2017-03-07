@@ -54,9 +54,7 @@ app.get('/', function (req, res) {
 })
 
 app.post('/', multipartMiddleware, function(req, res) {
- 
- //console.log(req.files.data.path);
- //var body = fs.readFileSync(req.files.data.path, "binary").toString();
+
 
  var body = fs.createReadStream(req.files.data.path);
   var size = fs.statSync(req.files.data.path).size;
@@ -128,12 +126,12 @@ app.post('/', multipartMiddleware, function(req, res) {
 
    
 
-     location = path.join(os.tmpdir(), name+'/.webm');
-     fs.rename(req.files.data.path, location);
+    //  location = path.join(os.tmpdir(), name+'/.webm');
+    //  fs.rename(req.files.data.path, location);
 
 
   
-    console.log("after renaming req path :"+req.files.data.path);
+    // console.log("after renaming req path :"+req.files.data.path);
 
 
     ffmpeg(req.files.data.path) //Input Video File
@@ -165,35 +163,6 @@ app.post('/', multipartMiddleware, function(req, res) {
 
 });
 
-// app.get('/ffmpeg-test',function(req,res){
 
-//   //console.log(ffmpeg);
-
-// 	ffmpeg(location) //Input Video File
-//     .output(os.tmpdir()+'/gametest.mp4') // Output File
-//     .audioCodec('libmp3lame') // Audio Codec
-//     .videoCodec('libx264')  // Video Codec
-//     .setStartTime(05) // Start Position
-//     .setDuration(08) // Duration
-//     .on('end', function(err) {
-//         if(!err)
-//         {
-
-//             console.log("Conversion Done");
-//             res.send('Video Cropping Done');
-
-//         }
-
-//     })
-//     .on('error', function(err){
-//         console.log('error: ', +err);
-
-//     }).run();
-
-//     res.sendStatus(200);
-
-// })
-// http.createServer(app).listen(80);
-// https.createServer(credentials, app).listen(443);
 https.createServer(options, app).listen(4433);
 console.log("This is data");
