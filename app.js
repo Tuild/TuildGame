@@ -61,7 +61,7 @@ app.post('/', multipartMiddleware, function(req, res) {
  var body = fs.createReadStream(req.files.data.path);
   var size = fs.statSync(req.files.data.path).size;
   name = (new Date).getTime();
-  console.log(body);
+  //console.log(body);
   var params = {
               Bucket: "tuild",
               Key: name+".webm",
