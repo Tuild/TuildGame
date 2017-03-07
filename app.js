@@ -113,7 +113,7 @@ app.post('/', multipartMiddleware, function(req, res) {
 
     if(err){
 
-      console.log("error disconnecting");
+      console.log("error disconnecting :"+ err);
     }
     else{
 
