@@ -126,16 +126,10 @@ app.post('/', multipartMiddleware, function(req, res) {
 
    
 
-    //  location = path.join(os.tmpdir(), name+'/.webm');
-    //  fs.rename(req.files.data.path, location);
-
-
-  
-    // console.log("after renaming req path :"+req.files.data.path);
 
 
     ffmpeg(req.files.data.path) //Input Video File
-    .output(os.tmpdir()+'/gametest.mp4') // Output File
+    .output(os.tmpdir()+name+'.mp4') // Output File
     .audioCodec('libmp3lame') // Audio Codec
     .videoCodec('libx264')  // Video Codec
     .setStartTime(02) // Start Position
