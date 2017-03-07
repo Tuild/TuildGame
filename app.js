@@ -21,7 +21,7 @@ var s3 = new aws.S3();
 var location;
 
 
-var connection = mysql.createConnection({
+var pool = mysql.createPool({
 
 
   host: 'tuilddb2.cpicb8dhirgw.us-west-2.rds.amazonaws.com',
@@ -82,45 +82,61 @@ app.post('/', multipartMiddleware, function(req, res) {
 
   });
 
-
-    connection.connect(function(err){
-
-      if(err){
-
-        console.log("Connection not Established");
-      }
-      else{
-
-        console.log("connection established");
-      }
+    pool.getConnection(function(err,connection){
 
 
-    });
-    
-    
-
-   connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,"testarray","testtimestamp")',[name+".webm"], function(err, rows, fields) {
+      connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,"testarray","testtimestamp")',[name+".webm"], function(err, rows, fields) {
   
 
-  if(err)
-    console.log("Query Error");
+  // if(err)
+  //   console.log("Query Error");
+
+  connection.release();
 
 
 });
 
-  connection.end(function(err){
+
+    })
+
+    // connection.connect(function(err){
+
+    //   if(err){
+
+    //     console.log("Connection not Established");
+    //   }
+    //   else{
+
+    //     console.log("connection established");
+    //   }
 
 
-    if(err){
+    // });
+    
+    
 
-      console.log("error disconnecting :"+ err);
-    }
-    else{
+//    connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,"testarray","testtimestamp")',[name+".webm"], function(err, rows, fields) {
+  
 
-      console.log("connection Ended");
-    }
+//   if(err)
+//     console.log("Query Error");
 
-  });
+
+// });
+
+  // connection.end(function(err){
+
+
+  //   if(err){
+
+  //     console.log("error disconnecting :"+ err);
+  //   }
+  //   else{
+
+  //     console.log("connection Ended");
+  //   }
+
+  // });
 
 
 
@@ -157,6 +173,11 @@ app.post('/', multipartMiddleware, function(req, res) {
 
 
 });
+
+
+app.get('/tagging', function (req, res) {
+  res.redirect('/test.html')
+})
 
 
 https.createServer(options, app).listen(4433);
