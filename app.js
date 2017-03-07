@@ -114,7 +114,7 @@ app.post('/', multipartMiddleware, function(req, res) {
     }
     else{
 
-      cosole.log("connection Ended");
+      console.log("connection Ended");
     }
 
   });
