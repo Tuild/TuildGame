@@ -74,7 +74,12 @@ app.post('/', multipartMiddleware, function(req, res) {
 
     if(err){
 
-      console.log("aws error :"+err);
+      console.log("AWS ERROR");
+    }
+    else{
+
+      console.log("AWS INSERTED");
+
     }
 
   });
@@ -84,7 +89,7 @@ app.post('/', multipartMiddleware, function(req, res) {
 
       if(err){
 
-        console.log(err);
+        console.log("Connection not Established");
       }
       else{
 
@@ -100,7 +105,7 @@ app.post('/', multipartMiddleware, function(req, res) {
   
 
   if(err)
-    console.log(err);
+    console.log("Query Error");
 
 
 });
@@ -148,12 +153,13 @@ app.post('/', multipartMiddleware, function(req, res) {
 
     })
     .on('error', function(err){
-        console.log('error: ', +err);
+        console.log('error Croppring:');
 
     }).run();
 
    
 
+   console.log("everrything ran seemlessly");
    res.send('everrything ran seemlessly');
 
 
