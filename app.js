@@ -97,74 +97,30 @@ app.post('/', multipartMiddleware, function(req, res) {
 });
 
 
-    })
-
-    // connection.connect(function(err){
-
-    //   if(err){
-
-    //     console.log("Connection not Established");
-    //   }
-    //   else{
-
-    //     console.log("connection established");
-    //   }
-
-
-    // });
-    
-    
-
-//    connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,"testarray","testtimestamp")',[name+".webm"], function(err, rows, fields) {
-  
-
-//   if(err)
-//     console.log("Query Error");
-
-
-// });
-
-  // connection.end(function(err){
-
-
-  //   if(err){
-
-  //     console.log("error disconnecting :"+ err);
-  //   }
-  //   else{
-
-  //     console.log("connection Ended");
-  //   }
-
-  // });
+})
 
 
 
-   
+    // ffmpeg(req.files.data.path) //Input Video File
+    // .output(os.tmpdir()+'/'+name+'.mp4') // Output File
+    // .audioCodec('libmp3lame') // Audio Codec
+    // .videoCodec('libx264')  // Video Codec
+    // .setStartTime(02) // Start Position
+    // .setDuration(03) // Duration
+    // .on('end', function(err) {
+    //     if(!err)
+    //     {
 
-
-    // var outputPath = name
-
-    ffmpeg(req.files.data.path) //Input Video File
-    .output(os.tmpdir()+'/'+name+'.mp4') // Output File
-    .audioCodec('libmp3lame') // Audio Codec
-    .videoCodec('libx264')  // Video Codec
-    .setStartTime(02) // Start Position
-    .setDuration(03) // Duration
-    .on('end', function(err) {
-        if(!err)
-        {
-
-            console.log("Conversion Done");
+    //         console.log("Conversion Done");
             
 
-        }
+    //     }
 
-    })
-    .on('error', function(err){
-        console.log('error Croppring:');
+    // })
+    // .on('error', function(err){
+    //     console.log('error Croppring:');
 
-    }).run();
+    // }).run();
 
    
 

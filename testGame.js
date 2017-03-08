@@ -12,8 +12,12 @@ var noofBalls = 0;
 var mainTime;
 var times = [];
 var refreshcounter = 34;
+var answers = [];
 
-
+var options = document.getElementById("options");
+options.style.visibility = 'hidden';
+var videotag = document.getElementById("vid");
+videotag.style.visibility = 'hidden';
 
 function startGame() {
     myGamePiece = new component(25, 25, "http://www.officialpsds.com/images/thumbs/BASEBALL2-psd25471.png", 0,350, "image");
@@ -113,7 +117,7 @@ function updateGameArea() {
     if(myGamePiece.x>=1300){
       
         var d = new Date();
-       // console.log(Math.round((d.getTime()-mainTime)/1000));
+        times.push(Math.round((d.getTime()-mainTime)/1000));
         setTimeout(setx(),1000);
         alreadyHit = false;
         noofBalls++;
@@ -209,14 +213,77 @@ function disp(index){
 
 const record = document.getElementById('record')
 const stop = document.getElementById('stop')
-
+const vid = document.getElementById('vid');
 
 function display(bigVideoBlob){
 
-    var video = document.getElementById("vid");
-    video.src = window.URL.createObjectURL(bigVideoBlob);
+    
+    vid.src = window.URL.createObjectURL(bigVideoBlob);
+    startLoop(); 
 
 }
+
+function startLoop(){
+
+    index = 0,
+    currentStopTime = times[index];
+    //displayQuestion();
+
+    vid.play();
+
+    vid.ontimeupdate = function() {timeupdate()};
+
+
+
+
+
+
+}
+
+function displayOptions(){
+
+options.style.visibility = 'visible';
+
+
+
+}
+
+function submit(){
+
+if(document.getElementById("Yes").checked){
+
+  answers.push("yes");
+}
+else{
+
+  answers.push("no");
+}
+
+options.style.visibility = 'hidden';
+
+vid.play();
+
+}
+
+
+
+  function timeupdate(){
+
+    if (vid.currentTime >= currentStopTime) {
+        vid.pause();
+        displayOptions();
+        //alert('hello');
+        //setTimeout(function(){ },2000);
+        if (times.length > ++index) {       // increase index and get next time
+            currentStopTime = times[index];
+            //vid.play();
+        }
+        else {                               // or loop/next...
+            // done
+        }
+    }
+  }
+
 
 if (!navigator.mediaDevices){
   alert('getUserMedia support required to use this page')
@@ -252,7 +319,6 @@ navigator.mediaDevices.getUserMedia({
   stop.onclick = ()=> {
     recorder.stop()
     console.log(recorder.state)
-    // document.getElementById('status').innerHTML = 'recorder started'
     console.log('recorder stopped')
   }
 
@@ -265,7 +331,9 @@ navigator.mediaDevices.getUserMedia({
    
     var bigVideoBlob = new Blob(chunks, { 'type' : 'video/webm; codecs=webm' })
     document.body.childNodes[0].remove();
+    videotag.style.visibility = 'visible';
     display(bigVideoBlob);
+
 
     //console.log(bigVideoBlob);
     let fd = new FormData()
@@ -309,8 +377,6 @@ function hide(){
   moveright();
   var da = new Date();
   mainTime = da.getTime();
-
-
   document.getElementById('record').click();
 
 }
