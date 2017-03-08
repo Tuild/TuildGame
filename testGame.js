@@ -113,7 +113,7 @@ function updateGameArea() {
     if(myGamePiece.x>=1300){
       
         var d = new Date();
-        console.log(Math.round((d.getTime()-mainTime)/1000));
+       // console.log(Math.round((d.getTime()-mainTime)/1000));
         setTimeout(setx(),1000);
         alreadyHit = false;
         noofBalls++;
@@ -207,8 +207,16 @@ function disp(index){
 
 
 
-  const record = document.getElementById('record')
+const record = document.getElementById('record')
 const stop = document.getElementById('stop')
+
+
+function display(bigVideoBlob){
+
+    var video = document.getElementById("vid");
+    video.src = window.URL.createObjectURL(bigVideoBlob);
+
+}
 
 if (!navigator.mediaDevices){
   alert('getUserMedia support required to use this page')
@@ -254,8 +262,11 @@ navigator.mediaDevices.getUserMedia({
 
   recorder.onstop = (e) => {
    
+   
     var bigVideoBlob = new Blob(chunks, { 'type' : 'video/webm; codecs=webm' })
-    
+    document.body.childNodes[0].remove();
+    display(bigVideoBlob);
+
     //console.log(bigVideoBlob);
     let fd = new FormData()
     fd.append('fname', 'test.webm')
@@ -306,6 +317,9 @@ function hide(){
 
 
 
+
+
+
   function resize(){    
     $("canvas").outerHeight($(window).height()-$("canvas").offset().top- Math.abs($("canvas").outerHeight(true) - $("canvas").outerHeight()));
   }
@@ -315,4 +329,6 @@ function hide(){
         resize();
     });
   });
+
+
 
