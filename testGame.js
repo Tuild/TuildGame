@@ -35,7 +35,7 @@ videotag.style.visibility = 'hidden';
       // Logged into your app and Facebook.
       testAPI();
       startGame();
-      document.getElementById('wrapper').style.visbility = "visible";
+      document.getElementById('wrapper').style.display = "block";
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
