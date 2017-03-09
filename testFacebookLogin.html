@@ -30,6 +30,7 @@ canvas {
       // Logged into your app and Facebook.
       testAPI();
       startGame();
+      document.getElementById('wrapper').style.visbility = "visible";
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -114,9 +115,9 @@ canvas {
 <input class="invis" id="record" type="button" value="record" />
 <input class="invis" id="stop" type="button" value="stop" />
 
-<div id="wrapper">
-         <button class="btn" onclick="hide()">Play</button>
-      </div>
+<div id="wrapper" style="visbility:hidden;">
+      <button class="btn" onclick="hide()">Play</button>
+ </div>
 
 <div id="options">
 
