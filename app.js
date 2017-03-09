@@ -73,7 +73,7 @@ app.post('/', multipartMiddleware, function(req, res) {
     if(err){
 
       console.log("AWS ERROR");
-      fs.unlink(req.files.data.path, function(err){
+      fs.unlink(req.files.data.meta.path, function(err){
 
         if(err){
           console.log("not unlinked");
