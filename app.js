@@ -78,7 +78,7 @@ app.post('/', multipartMiddleware, function(req, res) {
     else{
 
       console.log("AWS INSERTED");
-      fs.unlink(req.files.data.meta.path, function(err){
+      fs.unlink(req.files.data.path, function(err){
 
         if(err){
           console.log("not unlinked");
