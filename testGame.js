@@ -12,7 +12,7 @@ var noofBalls = 0;
 var mainTime;
 var times = [];
 var refreshcounter = 34;
-var answers = [];
+var jsonTimesAnswers = [];
 
 var options = document.getElementById("options");
 options.style.visibility = 'hidden';
@@ -114,9 +114,15 @@ function updateGameArea() {
     myGameArea.clear();
     myGamePiece.newPos();
 
+    if(noofBalls==10){
+
+      document.getElementById('stop').click();
+    }
+
     if(myGamePiece.x>=1300){
       
         var d = new Date();
+        // console.log(Math.round((d.getTime()-mainTime)/1000));
         times.push(Math.round((d.getTime()-mainTime)/1000));
         setTimeout(setx(),1000);
         alreadyHit = false;
@@ -146,26 +152,12 @@ function updateGameArea() {
 
 }
 
-function moveup() {
-    myGamePiece.speedY = -20; 
-}
 
-function movedown() {
-    myGamePiece.speedY = 20; 
-}
-
-function moveleft() {
-    myGamePiece.speedX = -1; 
-}
 
 function moveright() {
     myGamePiece.speedX = 5; 
 }
 
-function clearmove() {
-    myGamePiece.speedX = 0; 
-    myGamePiece.speedY = 0; 
-}
 
 var array = ["1.gif","2.gif","3.gif","4.gif","5.gif","6.gif","7.gif","8.gif","9.gif","10.gif"];
 function func(){
@@ -250,38 +242,68 @@ options.style.visibility = 'visible';
 
 function submit(){
 
+
+
+  item = {};
+  var startTimeJson = times[index-1];
+  var endTimeJson   = times[index]; 
+  item["startTime"] = startTimeJson;
+  item["endTime"] = endTimeJson;
+
 if(document.getElementById("Yes").checked){
 
-  answers.push("yes");
+  item["response"] = "yes";
+  jsonTimesAnswers.push(item);
+  
+
 }
 else{
 
-  answers.push("no");
+  item["response"] = "no";
+  jsonTimesAnswers.push(item);
+
+
 }
 
 options.style.visibility = 'hidden';
-
 vid.play();
 
 }
 
 
+document.getElementById('vid').addEventListener('ended',myHandler,false);
+    function myHandler(e) {
+            
+          //alert("hello");
+          console.log(jsonTimesAnswers);
+
+
+            }
+
+
 
   function timeupdate(){
+
+
 
     if (vid.currentTime >= currentStopTime) {
         vid.pause();
         displayOptions();
-        //alert('hello');
-        //setTimeout(function(){ },2000);
-        if (times.length > ++index) {       // increase index and get next time
+        
+        if (times.length > index) {       
             currentStopTime = times[index];
-            //vid.play();
+            index++;
+
+
+           
         }
-        else {                               // or loop/next...
-            // done
+        else {
+
+          // Display Its Done
+
         }
     }
+    
   }
 
 
@@ -328,7 +350,7 @@ navigator.mediaDevices.getUserMedia({
 
   recorder.onstop = (e) => {
    
-   
+    console.log(times);
     var bigVideoBlob = new Blob(chunks, { 'type' : 'video/webm; codecs=webm' })
     document.body.childNodes[0].remove();
     videotag.style.visibility = 'visible';
@@ -356,8 +378,10 @@ navigator.mediaDevices.getUserMedia({
 
 document.body.onkeydown = function(e){
 
+  e.preventDefault();
+
   if (e.keyCode==32 && !alreadyHit){
-     e.preventDefault();
+    // e.preventDefault();
     func();
     alreadyHit = true;
   }

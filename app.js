@@ -73,6 +73,17 @@ app.post('/', multipartMiddleware, function(req, res) {
     if(err){
 
       console.log("AWS ERROR");
+      fs.unlink(req.files.data.path, function(err){
+
+        if(err){
+          console.log("not unlinked");
+        }
+        else{
+          console.log("unlinked");
+        }
+
+
+      })
     }
     else{
 
@@ -87,9 +98,6 @@ app.post('/', multipartMiddleware, function(req, res) {
 
       connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,"testarray","testtimestamp")',[name+".webm"], function(err, rows, fields) {
   
-
-  // if(err)
-  //   console.log("Query Error");
 
   connection.release();
 
