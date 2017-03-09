@@ -73,6 +73,11 @@ app.post('/', multipartMiddleware, function(req, res) {
     if(err){
 
       console.log("AWS ERROR");
+      
+    }
+    else{
+
+      console.log("AWS INSERTED");
       fs.unlink(req.files.data.meta.path, function(err){
 
         if(err){
@@ -84,10 +89,6 @@ app.post('/', multipartMiddleware, function(req, res) {
 
 
       })
-    }
-    else{
-
-      console.log("AWS INSERTED");
 
     }
 
