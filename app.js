@@ -53,6 +53,10 @@ app.get('/', function (req, res) {
   res.redirect('/index.html')
 })
 
+app.get('/test.html', function (req, res) {
+  res.redirect('/test.html')
+})
+
 app.post('/', multipartMiddleware, function(req, res) {
 
 
@@ -140,9 +144,7 @@ app.post('/', multipartMiddleware, function(req, res) {
 });
 
 
-app.get('/tagging', function (req, res) {
-  res.redirect('/test.html')
-})
+
 
 
 https.createServer(options, app).listen(4433);
