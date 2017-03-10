@@ -50,7 +50,7 @@ var options = {
 
 
 app.get('/', function (req, res) {
-  res.redirect('/testFacebookLogin.html')
+  res.redirect('/index.html')
 })
 
 app.post('/', multipartMiddleware, function(req, res) {
