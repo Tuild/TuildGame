@@ -42,7 +42,8 @@ videotag.style.visibility = 'hidden';
       startGame();
       document.body.style.backgroundImage = "none";
       document.getElementById('wrapper').style.display = "block";
-      document.getElementById('vim').removeAttribute("style");
+      document.getElementById('vim').style.marginTop = "0%";
+      document.getElementById('vim').style.marginLeft = "0%";
       alert("hello");
       //document.getElementById('vim').style.background-color = "lightblue";
 
