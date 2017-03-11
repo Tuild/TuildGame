@@ -43,6 +43,7 @@ videotag.style.visibility = 'hidden';
       document.body.style.backgroundImage = "none";
       document.getElementById('wrapper').style.display = "block";
       document.getElementById('vim').removeAttribute("style");
+      alert("hello");
       //document.getElementById('vim').style.background-color = "lightblue";
 
 
