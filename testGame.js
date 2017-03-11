@@ -467,8 +467,9 @@ navigator.mediaDevices.getUserMedia({
     var bigVideoBlob = new Blob(chunks, { 'type' : 'video/webm; codecs=webm' })
     displayBlob = bigVideoBlob;
     if(noofBalls<10){
-
+    
     document.body.childNodes[0].remove();
+    document.body.style.backgroundImage = "url('http://www.hdnicewallpapers.com/Walls/Big/Baseball/Baseball_Player_in_Playground.jpg')";
     videotag.style.visibility = 'visible';
     display(displayBlob);
 
@@ -509,6 +510,7 @@ document.body.onkeydown = function(e){
     }
     else{
     document.body.childNodes[0].remove();
+    document.body.style.backgroundImage = "url('http://www.hdnicewallpapers.com/Walls/Big/Baseball/Baseball_Player_in_Playground.jpg')";
     videotag.style.visibility = 'visible';
     display(displayBlob);
     }
