@@ -20,6 +20,7 @@ options.style.display = 'none';
 var videotag = document.getElementById("vid");
 videotag.style.display = 'none';
 
+document.getElementById("Question").style.display = 'none';
 
 
 
@@ -471,6 +472,7 @@ navigator.mediaDevices.getUserMedia({
     document.body.childNodes[0].remove();
     document.body.style.backgroundImage = "url('http://www.hdnicewallpapers.com/Walls/Big/Baseball/Baseball_Player_in_Playground.jpg')";
     videotag.style.display = 'block';
+    document.getElementById("Question").style.display = "block";
     document.getElementById('vid').style.margin = "0 auto";
     document.getElementById('vid').style.display = "block";
 
@@ -515,6 +517,7 @@ document.body.onkeydown = function(e){
     document.body.childNodes[0].remove();
     document.body.style.backgroundImage = "url('http://www.hdnicewallpapers.com/Walls/Big/Baseball/Baseball_Player_in_Playground.jpg')";
     videotag.style.display = 'block';
+    document.getElementById("Question").style.display = "block";
     display(displayBlob);
     }
   }
