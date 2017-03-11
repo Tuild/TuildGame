@@ -486,10 +486,13 @@ document.body.onkeydown = function(e){
 
   if(e.keyCode==27){
     myGameArea.stop();
+    if(noofBalls<10){
+
+    document.getElementById('stop').click();
     document.body.childNodes[0].remove();
     videotag.style.visibility = 'visible';
     display(displayBlob);
-    
+    }
   }
 }
 
