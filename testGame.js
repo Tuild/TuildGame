@@ -455,6 +455,13 @@ navigator.mediaDevices.getUserMedia({
     //console.log(times);
     var bigVideoBlob = new Blob(chunks, { 'type' : 'video/webm; codecs=webm' })
     displayBlob = bigVideoBlob;
+    if(noofBalls<10){
+
+    document.body.childNodes[0].remove();
+    videotag.style.visibility = 'visible';
+    display(displayBlob);
+
+    }
 
     let fd = new FormData()
     fd.append('fname', 'test.webm')
@@ -485,10 +492,11 @@ document.body.onkeydown = function(e){
   }
 
   if(e.keyCode==27){
-    myGameArea.stop();
+   // myGameArea.stop();
     if(noofBalls<10){
-
-    document.getElementById('stop').click();
+       document.getElementById('stop').click();
+    }
+    else{
     document.body.childNodes[0].remove();
     videotag.style.visibility = 'visible';
     display(displayBlob);
