@@ -43,7 +43,8 @@ canvas {
 }
 
 .invis {
-  visibility: hidden;
+  
+  display: none;
 }
 
 body:after {

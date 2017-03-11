@@ -16,9 +16,9 @@ var jsonTimesAnswers = [];
 var displayBlob;
 
 var options = document.getElementById("options");
-options.style.visibility = 'hidden';
+options.style.display = 'none';
 var videotag = document.getElementById("vid");
-videotag.style.visibility = 'hidden';
+videotag.style.display = 'none';
 
 
 
@@ -345,7 +345,7 @@ function startLoop(){
 
 function displayOptions(){
 
-options.style.visibility = 'visible';
+options.style.display = 'block';
 
 
 
@@ -376,7 +376,7 @@ else{
 
 }
 
-options.style.visibility = 'hidden';
+options.style.display = 'none';
 vid.play();
 
 }
@@ -470,7 +470,7 @@ navigator.mediaDevices.getUserMedia({
     
     document.body.childNodes[0].remove();
     document.body.style.backgroundImage = "url('http://www.hdnicewallpapers.com/Walls/Big/Baseball/Baseball_Player_in_Playground.jpg')";
-    videotag.style.visibility = 'visible';
+    videotag.style.display = 'block';
     document.getElementById('vid').style.margin = "0 auto";
     document.getElementById('vid').style.display = "block";
 
@@ -514,7 +514,7 @@ document.body.onkeydown = function(e){
     else{
     document.body.childNodes[0].remove();
     document.body.style.backgroundImage = "url('http://www.hdnicewallpapers.com/Walls/Big/Baseball/Baseball_Player_in_Playground.jpg')";
-    videotag.style.visibility = 'visible';
+    videotag.style.display = 'block';
     display(displayBlob);
     }
   }
