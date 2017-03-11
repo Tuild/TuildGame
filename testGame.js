@@ -439,9 +439,11 @@ navigator.mediaDevices.getUserMedia({
   }
 
   stop.onclick = ()=> {
+    if(recorder.state!=stop){
     recorder.stop()
     console.log(recorder.state)
     console.log('recorder stopped')
+  }
   }
 
   video.onloadedmetadata = (e) => {
@@ -483,7 +485,7 @@ document.body.onkeydown = function(e){
   }
 
   if(e.keyCode==27){
-
+    myGameArea.stop();
     document.body.childNodes[0].remove();
     videotag.style.visibility = 'visible';
     display(displayBlob);
