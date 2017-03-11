@@ -42,8 +42,8 @@ videotag.style.visibility = 'hidden';
       startGame();
       document.body.style.backgroundImage = "none";
       document.getElementById('wrapper').style.display = "block";
-      document.getElementById('vim').style.display = "none";
-      document.getElementById('vim').style.background-color = "lightblue";
+      document.getElementById('vim').removeAttribute("style");
+      //document.getElementById('vim').style.background-color = "lightblue";
 
 
     } else if (response.status === 'not_authorized') {
