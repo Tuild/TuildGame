@@ -44,7 +44,8 @@ videotag.style.visibility = 'hidden';
       document.getElementById('wrapper').style.display = "block";
       document.getElementById('vim').style.marginTop = "0%";
       document.getElementById('vim').style.marginLeft = "0%";
-      alert("hello");
+      document.getElementsByTagName('fb:login-button').style.display = "none";
+      //alert("hello");
       //document.getElementById('vim').style.background-color = "lightblue";
 
 
