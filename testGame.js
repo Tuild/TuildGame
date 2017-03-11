@@ -42,7 +42,8 @@ videotag.style.visibility = 'hidden';
       startGame();
       document.body.style.backgroundImage = "none";
       document.getElementById('wrapper').style.display = "block";
-      document.getElementById('vim').style = "none";
+      document.getElementById('vim').style.margin-top = 0;
+      document.getElementById('vim').style.margin-left = 0;
       document.getElementById('vim').display = "none";
 
     } else if (response.status === 'not_authorized') {
