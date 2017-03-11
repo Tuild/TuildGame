@@ -13,6 +13,7 @@ var mainTime;
 var times = [];
 var refreshcounter = 34;
 var jsonTimesAnswers = [];
+var displayBlob;
 
 var options = document.getElementById("options");
 options.style.visibility = 'hidden';
@@ -215,6 +216,7 @@ function updateGameArea() {
     if(noofBalls==10){
 
       document.getElementById('stop').click();
+
     }
 
     if(myGamePiece.x>=1300){
@@ -448,11 +450,9 @@ navigator.mediaDevices.getUserMedia({
 
   recorder.onstop = (e) => {
    
-    console.log(times);
+    //console.log(times);
     var bigVideoBlob = new Blob(chunks, { 'type' : 'video/webm; codecs=webm' })
-    document.body.childNodes[0].remove();
-    videotag.style.visibility = 'visible';
-    display(bigVideoBlob);
+    displayBlob = bigVideoBlob;
 
     let fd = new FormData()
     fd.append('fname', 'test.webm')
@@ -484,7 +484,9 @@ document.body.onkeydown = function(e){
 
   if(e.keyCode==27){
 
-    document.getElementById('stop').click();
+    document.body.childNodes[0].remove();
+    videotag.style.visibility = 'visible';
+    display(displayBlob);
     
   }
 }
