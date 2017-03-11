@@ -42,7 +42,9 @@ videotag.style.visibility = 'hidden';
       startGame();
       document.body.style.backgroundImage = "none";
       document.getElementById('wrapper').style.display = "block";
-      document.getElementById('vim').style.visibility = "hidden";
+      document.getElementById('vim').style.display = "none";
+      document.getElementById('vim').style.background-color = "lightblue";
+
 
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
