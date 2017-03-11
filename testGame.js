@@ -471,6 +471,9 @@ navigator.mediaDevices.getUserMedia({
     document.body.childNodes[0].remove();
     document.body.style.backgroundImage = "url('http://www.hdnicewallpapers.com/Walls/Big/Baseball/Baseball_Player_in_Playground.jpg')";
     videotag.style.visibility = 'visible';
+    document.getElementById('vid').style.margin = "0 auto";
+    document.getElementById('vid').style.display = "block";
+
     display(displayBlob);
 
     }
