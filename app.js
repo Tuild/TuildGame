@@ -72,7 +72,7 @@ app.post('/', multipartMiddleware, function(req, res) {
 
     if(err){
 
-      console.log("AWS ERROR");
+      console.log("AWS ERROR :"+err);
       
     }
     else{
