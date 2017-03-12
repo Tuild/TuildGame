@@ -61,7 +61,7 @@ app.post('/', multipartMiddleware, function(req, res) {
    var name = (new Date).getTime();
   //console.log(body);
   var params = {
-              Bucket: "checktuild",
+              Bucket: "tuild",
               Key: name+".webm",
               Body: body,//this hast to be a string                                                     
               ContentType: 'video/webm',
