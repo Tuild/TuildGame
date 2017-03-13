@@ -15,6 +15,7 @@ var refreshcounter = 34;
 var jsonTimesAnswers = [];
 var displayBlob;
 var primaryKey;
+var fbId;
 
 var options = document.getElementById("options");
 options.style.display = 'none';
@@ -121,7 +122,7 @@ document.getElementById("Question").style.display = 'none';
     FB.api('/me', function(response) {
 
       var fbDate = new Date();
-      var fbId = response.id;
+      fbId = response.id;
 
       primaryKey = fbId.concat(fbDate.getTime());
 
