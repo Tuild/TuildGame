@@ -55,7 +55,7 @@ app.get('/', function (req, res) {
 
 app.post('/', multipartMiddleware, function(req, res) {
 
-console.log(req);
+console.log(req.body.times);
  var body = fs.createReadStream(req.files.data.path);
   var size = fs.statSync(req.files.data.path).size;
    var name = (new Date).getTime();
