@@ -103,7 +103,7 @@ var primaryKey = req.body.primaryKey;
     pool.getConnection(function(err,connection){
 
 
-      connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (?,?,?,"testtimestamp")',[fbId,name+".webm",arr], function(err, rows, fields) {
+      connection.query('INSERT into uploads (uniqueID,fb_id,video_file_url,times_array) VALUES (?,?,?,?)',[primaryKey,fbId,primaryKey+".webm",arr], function(err, rows, fields) {
   
 
   connection.release();
