@@ -154,7 +154,7 @@ app.post('/answers', multipartMiddleware, function(req, res) {
      pool.getConnection(function(err,connection){
 
 
-      connection.query('UPDATE uploads SET responses = ? WHERE uniqueID = ?', [responses., userId], function(err, rows, fields) {
+      connection.query('UPDATE uploads SET responses = ? WHERE uniqueID = ?', [responses, userId], function(err, rows, fields) {
   
 
       connection.release();
