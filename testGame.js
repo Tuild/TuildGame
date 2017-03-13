@@ -431,7 +431,9 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
 
           fd1.append('primaryKey',primaryKey);
           fd1.append('responses',jsonTimesAnswers);
-          console.log(jsonTimesAnswers);
+
+
+          console.log(fd1);
 
             $.ajax({
                     type: 'POST',
