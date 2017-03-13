@@ -121,7 +121,9 @@ document.getElementById("Question").style.display = 'none';
     FB.api('/me', function(response) {
 
       var fbDate = new Date();
-      primaryKey = fbDate.getTime();
+      var fbId = response.id;
+
+      primaryKey = fbId.concat(fbDate.getTime());
 
       primaryKey = primaryKey.concat(response.id);
 
