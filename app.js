@@ -148,24 +148,25 @@ var primaryKey = req.body.primaryKey;
 
 app.post('/answers',function(req, res) {
 
+  console.log(req);
 
-    var responses = JSON.stringify(req.body.responses);
+//     var responses = JSON.stringify(req.body.responses);
 
-     pool.getConnection(function(err,connection){
+//      pool.getConnection(function(err,connection){
 
 
-      connection.query('UPDATE uploads SET responses = ? WHERE uniqueID = ?', [responses, userId], function(err, rows, fields) {
+//       connection.query('UPDATE uploads SET responses = ? WHERE uniqueID = ?', [responses, userId], function(err, rows, fields) {
   
 
-      connection.release();
+//       connection.release();
 
 
-});
+// });
 
 
-})
+// })
 
-
+res.send('everrything ran seemlessly1');
 });
 
 
