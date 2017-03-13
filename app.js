@@ -68,7 +68,7 @@ var primaryKey = req.body.primaryKey;
   //console.log(body);
   var params = {
               Bucket: "tuild",
-              Key: name+".webm",
+              Key: primaryKey+".webm",
               Body: body,//this hast to be a string                                                     
               ContentType: 'video/webm',
               ContentLength : size,
