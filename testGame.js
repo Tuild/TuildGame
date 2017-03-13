@@ -42,6 +42,7 @@ document.getElementById("Question").style.display = 'none';
       // Logged into your app and Facebook.
       testAPI();
       startGame();
+      console.log("user id :"+response.userID);
       document.body.style.backgroundImage = "none";
       document.getElementById('wrapper').style.display = "block";
       document.getElementById('vim').style.marginTop = "0%";
@@ -72,7 +73,7 @@ document.getElementById("Question").style.display = 'none';
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
-      console.log("userID :"+response.userID);
+
 
     });
   }
