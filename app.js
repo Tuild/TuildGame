@@ -115,26 +115,7 @@ var primaryKey = req.body.primaryKey;
 
 
 
-    // ffmpeg(req.files.data.path) //Input Video File
-    // .output(os.tmpdir()+'/'+name+'.mp4') // Output File
-    // .audioCodec('libmp3lame') // Audio Codec
-    // .videoCodec('libx264')  // Video Codec
-    // .setStartTime(02) // Start Position
-    // .setDuration(03) // Duration
-    // .on('end', function(err) {
-    //     if(!err)
-    //     {
 
-    //         console.log("Conversion Done");
-            
-
-    //     }
-
-    // })
-    // .on('error', function(err){
-    //     console.log('error Croppring:');
-
-    // }).run();
 
    
 
@@ -168,6 +149,33 @@ app.post('/answers', multipartMiddleware,function(req, res) {
 
 res.send('everrything ran seemlessly1');
 });
+
+
+function cropVideos(){
+
+    ffmpeg(req.files.data.path) //Input Video File
+    .output(os.tmpdir()+'/'+name+'.mp4') // Output File
+    .audioCodec('libmp3lame') // Audio Codec
+    .videoCodec('libx264')  // Video Codec
+    .setStartTime(02) // Start Position
+    .setDuration(03) // Duration
+    .on('end', function(err) {
+        if(!err)
+        {
+
+            console.log("Conversion Done");
+            
+
+        }
+
+    })
+    .on('error', function(err){
+        console.log('error Croppring:');
+
+    }).run();
+  
+}
+
 
 
 https.createServer(options, app).listen(4433);
