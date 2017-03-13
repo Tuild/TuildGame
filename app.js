@@ -149,7 +149,8 @@ app.post('/answers', multipartMiddleware,function(req, res) {
 
  
 
-    var responses = (req.body.responses).toString();;
+    var responses = (req.body.responses).toString();
+    var userId    =  req.body.responses.primaryKey;
 
      pool.getConnection(function(err,connection){
 
