@@ -435,7 +435,7 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
 
             $.ajax({
                     type: 'POST',
-                    url: '/',
+                    url: '/answers',
                     data: fd1,
                     processData: false,
                     contentType: false
