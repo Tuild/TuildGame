@@ -146,9 +146,27 @@ var primaryKey = req.body.primaryKey;
 });
 
 
-app.get('/tagging', function (req, res) {
-  res.redirect('/test.html')
+app.post('/answers', multipartMiddleware, function(req, res) {
+
+
+    var responses = JSON.stringify(req.body.responses);
+
+     pool.getConnection(function(err,connection){
+
+
+      connection.query('UPDATE uploads SET responses = ? WHERE uniqueID = ?', [responses., userId], function(err, rows, fields) {
+  
+
+      connection.release();
+
+
+});
+
+
 })
+
+
+});
 
 
 https.createServer(options, app).listen(4433);
