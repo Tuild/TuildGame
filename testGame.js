@@ -433,22 +433,18 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
           fd1.append('responses',jsonTimesAnswers);
           console.log(jsonTimesAnswers);
 
-          $.ajax({
-                type: 'POST',
-                url: '/answers',
-                data: fd1,
-                processData: false,
-                contentType: false
-              }).done(function(data) {
-                console.log(fd.data)
-                
+            $.ajax({
+                    type: 'POST',
+                    url: '/',
+                    data: fd1,
+                    processData: false,
+                    contentType: false
+                  }).done(function(data) {
+                    //console.log(fd.data)
+                    
+                  })
+                }
               })
-            }
-          }).catch(function(err){
-            console.log('error', err)
-          })
-
-
 
             }
 
