@@ -426,27 +426,27 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
             
 
             console.log(primaryKey);
-          // let fd = new FormData()
+          let fd1 = new FormData()
 
 
-          // fd.append('primaryKey',primaryKey);
-          // fd.append('responses',jsonTimesAnswers);
-          // console.log(jsonTimesAnswers);
+          fd1.append('primaryKey',primaryKey);
+          fd1.append('responses',jsonTimesAnswers);
+          console.log(jsonTimesAnswers);
 
-          // $.ajax({
-          //       type: 'POST',
-          //       url: '/answers',
-          //       data: fd,
-          //       processData: false,
-          //       contentType: false
-          //     }).done(function(data) {
-          //       console.log(fd.data)
+          $.ajax({
+                type: 'POST',
+                url: '/answers',
+                data: fd1,
+                processData: false,
+                contentType: false
+              }).done(function(data) {
+                console.log(fd.data)
                 
-          //     })
-          //   }
-          // }).catch(function(err){
-          //   console.log('error', err)
-          // })
+              })
+            }
+          }).catch(function(err){
+            console.log('error', err)
+          })
 
 
 
