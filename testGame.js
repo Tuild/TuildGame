@@ -32,8 +32,8 @@ document.getElementById("Question").style.display = 'none';
 
 // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
+    // console.log('statusChangeCallback');
+    // console.log(response);
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
@@ -120,11 +120,13 @@ document.getElementById("Question").style.display = 'none';
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
 
-      // var fbDate = new Date();
-      // primaryKey = fbDate.getTime();
+      var fbDate = new Date();
+      primaryKey = fbDate.getTime().append(response.id);
 
 
-      console.log('Successful login for: ' + response.id);
+
+
+      console.log('Successful login for: ' + primaryKey);
 
      
     });
