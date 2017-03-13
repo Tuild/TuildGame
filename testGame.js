@@ -407,7 +407,7 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
             console.log(primaryKey);
           let fd1 = new FormData()
 
-          fd1.append('fname', 'check')
+
           fd1.append('primaryKey',primaryKey);
           fd1.append('responses',jsonTimesAnswers);
 

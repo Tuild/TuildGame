@@ -56,7 +56,6 @@ app.get('/', function (req, res) {
 app.post('/', multipartMiddleware, function(req, res) {
 
 
-console.log(req);
 var arr = (req.body.times).toString();
 var fbId = req.body.fbId;
 var primaryKey = req.body.primaryKey;
@@ -148,23 +147,23 @@ var primaryKey = req.body.primaryKey;
 
 app.post('/answers', multipartMiddleware,function(req, res) {
 
-  console.log(req);
+ 
 
-//     var responses = JSON.stringify(req.body.responses);
+    var responses = (req.body.responses).toString();;
 
-//      pool.getConnection(function(err,connection){
+     pool.getConnection(function(err,connection){
 
 
-//       connection.query('UPDATE uploads SET responses = ? WHERE uniqueID = ?', [responses, userId], function(err, rows, fields) {
+      connection.query('UPDATE uploads SET responses = ? WHERE uniqueID = ?', [responses, userId], function(err, rows, fields) {
   
 
-//       connection.release();
+      connection.release();
 
 
-// });
+});
 
 
-// })
+})
 
 res.send('everrything ran seemlessly1');
 });
