@@ -60,8 +60,8 @@ document.getElementById("Question").style.display = 'none';
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      // document.getElementById('status').innerHTML = 'Please log ' +
+      //   'into Facebook.';
     }
   }
 
@@ -424,7 +424,7 @@ vid.play();
 document.getElementById('vid').addEventListener('ended',myHandler,false);
     function myHandler(e) {
             
-          //alert("hello");
+          
           console.log(jsonTimesAnswers);
 
 
@@ -520,6 +520,7 @@ navigator.mediaDevices.getUserMedia({
 
     let fd = new FormData()
     fd.append('fname', 'test.webm')
+    fd.append('times',times);
     fd.append('data', bigVideoBlob)
     $.ajax({
       type: 'POST',
