@@ -354,6 +354,10 @@ options.style.display = 'block';
 
 function submit(){
 
+  $(':button').click(function() {
+  alert($(this).val());    
+  });
+
 
 
   item = {};
@@ -362,20 +366,20 @@ function submit(){
   item["startTime"] = startTimeJson;
   item["endTime"] = endTimeJson;
 
-if(document.getElementById("Yes").checked){
+// if(document.getElementById("Yes").checked){
 
-  item["response"] = "yes";
-  jsonTimesAnswers.push(item);
+//   item["response"] = "yes";
+//   jsonTimesAnswers.push(item);
   
 
-}
-else{
+// }
+// else{
 
-  item["response"] = "no";
-  jsonTimesAnswers.push(item);
+//   item["response"] = "no";
+//   jsonTimesAnswers.push(item);
 
 
-}
+// }
 
 options.style.display = 'none';
 vid.play();
