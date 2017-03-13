@@ -146,7 +146,7 @@ var primaryKey = req.body.primaryKey;
 });
 
 
-app.post('/answers', multipartMiddleware, function(req, res) {
+app.post('/answers',function(req, res) {
 
 
     var responses = JSON.stringify(req.body.responses);
