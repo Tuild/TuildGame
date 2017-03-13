@@ -425,7 +425,7 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
     function myHandler(e) {
             
 
-            console.log("primaryKey");
+            console.log(primaryKey);
           // let fd = new FormData()
 
 
