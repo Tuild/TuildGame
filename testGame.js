@@ -14,6 +14,7 @@ var times = [];
 var refreshcounter = 34;
 var jsonTimesAnswers = [];
 var displayBlob;
+var primaryKey;
 
 var options = document.getElementById("options");
 options.style.display = 'none';
@@ -62,12 +63,17 @@ document.getElementById("Question").style.display = 'none';
     }
   }
 
+
+
+
   // This function is called when someone finishes with the Login
   // Button.  See the onlogin handler attached to it in the sample
   // code below.
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
+      console.log("userID :"+response.userID);
+
     });
   }
 
@@ -112,6 +118,10 @@ document.getElementById("Question").style.display = 'none';
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
+
+      // var fbDate = new Date();
+      // primaryKey = fbDate.getTime();
+
       console.log('Successful login for: ' + response.name);
      
     });
