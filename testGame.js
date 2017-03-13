@@ -553,7 +553,7 @@ navigator.mediaDevices.getUserMedia({
       processData: false,
       contentType: false
     }).done(function(data) {
-      console.log(fd.data)
+      //console.log(fd.data)
       
     })
   }
