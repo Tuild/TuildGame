@@ -424,27 +424,27 @@ vid.play();
 document.getElementById('vid').addEventListener('ended',myHandler,false);
     function myHandler(e) {
             
-          let fd = new FormData()
+          // let fd = new FormData()
 
 
-          fd.append('primaryKey',primaryKey);
-          fd.append('responses',jsonTimesAnswers);
-          console.log(jsonTimesAnswers);
+          // fd.append('primaryKey',primaryKey);
+          // fd.append('responses',jsonTimesAnswers);
+          // console.log(jsonTimesAnswers);
 
-          $.ajax({
-                type: 'POST',
-                url: '/answers',
-                data: fd,
-                processData: false,
-                contentType: false
-              }).done(function(data) {
-                console.log(fd.data)
+          // $.ajax({
+          //       type: 'POST',
+          //       url: '/answers',
+          //       data: fd,
+          //       processData: false,
+          //       contentType: false
+          //     }).done(function(data) {
+          //       console.log(fd.data)
                 
-              })
-            }
-          }).catch(function(err){
-            console.log('error', err)
-          })
+          //     })
+          //   }
+          // }).catch(function(err){
+          //   console.log('error', err)
+          // })
 
 
 
