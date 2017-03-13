@@ -356,14 +356,10 @@ function submit(){
 
   var c = document.getElementsByClassName('btn1').value;
 
-  if(c == "yes"){
 
-    alert("yes");
-  }
-  else{
-    alert("no");
-  }
 
+    alert(c);
+  
 
   item = {};
   var startTimeJson = times[index-1];
