@@ -42,7 +42,7 @@ document.getElementById("Question").style.display = 'none';
       // Logged into your app and Facebook.
       testAPI();
       startGame();
-      console.log("user id :"+response.userID);
+      
       document.body.style.backgroundImage = "none";
       document.getElementById('wrapper').style.display = "block";
       document.getElementById('vim').style.marginTop = "0%";
@@ -122,9 +122,10 @@ document.getElementById("Question").style.display = 'none';
 
       // var fbDate = new Date();
       // primaryKey = fbDate.getTime();
-      console.log("response "+response);
 
-      console.log('Successful login for: ' + response.name);
+
+      console.log('Successful login for: ' + response.id);
+
      
     });
   }
