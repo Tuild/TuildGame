@@ -354,10 +354,15 @@ options.style.display = 'block';
 
 function submit(){
 
-  $(':button').click(function() {
-  alert($(this).val());    
-  });
+  var c = document.getElementsByClassName('btn1').value;
 
+  if(c = "yes"){
+
+    alert("yes");
+  }
+  else{
+    alert("no");
+  }
 
 
   item = {};
