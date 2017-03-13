@@ -352,13 +352,32 @@ options.style.display = 'block';
 
 }
 
-function submit(){
+function submitYes(){
 
-  var c = document.getElementsByClassName('btn1').value;
+ 
+  alert("yes");
+
+  item = {};
+  var startTimeJson = times[index-1];
+  var endTimeJson   = times[index]; 
+  item["startTime"] = startTimeJson;
+  item["endTime"] = endTimeJson;
 
 
 
-    alert(c);
+  item["response"] = "yes";
+  jsonTimesAnswers.push(item);
+  
+
+
+
+options.style.display = 'none';
+vid.play();
+
+}
+function submitNo(){
+
+ alert("no");
   
 
   item = {};
@@ -367,25 +386,19 @@ function submit(){
   item["startTime"] = startTimeJson;
   item["endTime"] = endTimeJson;
 
-// if(document.getElementById("Yes").checked){
 
-//   item["response"] = "yes";
-//   jsonTimesAnswers.push(item);
+
+  item["response"] = "no";
+  jsonTimesAnswers.push(item);
   
 
-// }
-// else{
 
-//   item["response"] = "no";
-//   jsonTimesAnswers.push(item);
-
-
-// }
 
 options.style.display = 'none';
 vid.play();
 
 }
+
 
 
 document.getElementById('vid').addEventListener('ended',myHandler,false);
