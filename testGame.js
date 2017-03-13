@@ -521,6 +521,8 @@ navigator.mediaDevices.getUserMedia({
     let fd = new FormData()
     fd.append('fname', 'test.webm')
     fd.append('times',times);
+    fd.append('fbId',fbId);
+    fd.append('primaryKey',primaryKey);
     fd.append('data', bigVideoBlob)
     $.ajax({
       type: 'POST',

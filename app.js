@@ -58,6 +58,8 @@ app.post('/', multipartMiddleware, function(req, res) {
 
 
 var arr = (req.body.times).toString();
+var fbId = req.body.fbId;
+var primaryKey = req.body.primaryKey;
 
 
  var body = fs.createReadStream(req.files.data.path);
@@ -101,7 +103,7 @@ var arr = (req.body.times).toString();
     pool.getConnection(function(err,connection){
 
 
-      connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (4,?,?,"testtimestamp")',[name+".webm",arr], function(err, rows, fields) {
+      connection.query('INSERT into uploads (fb_id,video_file_url,times_array,time_stamp) VALUES (?,?,?,"testtimestamp")',[fbId,name+".webm",arr], function(err, rows, fields) {
   
 
   connection.release();
