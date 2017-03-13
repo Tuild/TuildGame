@@ -3,7 +3,7 @@ var alreadyHit = false;
 var myGamePiece;
 var Background;
 var myGamePiece1;
-var speed = 1;
+var speed = 20;
 var noOfHits = 0;
 var score = 0;
 var homerun;
@@ -356,7 +356,7 @@ function submit(){
 
   var c = document.getElementsByClassName('btn1').value;
 
-  if(c = "yes"){
+  if(c == "yes"){
 
     alert("yes");
   }
