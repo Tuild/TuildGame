@@ -407,7 +407,7 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
             console.log(primaryKey);
           let fd1 = new FormData()
 
-
+          fd1.append('fname', 'check')
           fd1.append('primaryKey',primaryKey);
           fd1.append('responses',jsonTimesAnswers);
 
@@ -517,7 +517,7 @@ navigator.mediaDevices.getUserMedia({
     }
 
     let fd = new FormData()
-    fd.append('fname', 'test.webm')
+    // fd.append('fname', 'test.webm')
     fd.append('times',times);
     fd.append('fbId',fbId);
     fd.append('primaryKey',primaryKey);
