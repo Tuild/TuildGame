@@ -375,18 +375,7 @@ options.style.display = 'block';
 function submitYes(){
 
  
-  alert("yes");
-
-  item = {};
-  var startTimeJson = times[index-1];
-  var endTimeJson   = times[index]; 
-  item["startTime"] = startTimeJson;
-  item["endTime"] = endTimeJson;
-
-
-
-  item["response"] = "yes";
-  jsonTimesAnswers.push(item);
+  jsonTimesAnswers.push("yes");
   
 
 
@@ -397,19 +386,9 @@ vid.play();
 }
 function submitNo(){
 
- alert("no");
-  
-
-  item = {};
-  var startTimeJson = times[index-1];
-  var endTimeJson   = times[index]; 
-  item["startTime"] = startTimeJson;
-  item["endTime"] = endTimeJson;
 
 
-
-  item["response"] = "no";
-  jsonTimesAnswers.push(item);
+  jsonTimesAnswers.push("no");
   
 
 
