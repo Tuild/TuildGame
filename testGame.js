@@ -122,6 +122,7 @@ document.getElementById("Question").style.display = 'none';
 
       // var fbDate = new Date();
       // primaryKey = fbDate.getTime();
+      console.log("response "+response);
 
       console.log('Successful login for: ' + response.name);
      
