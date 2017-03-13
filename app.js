@@ -146,9 +146,9 @@ var primaryKey = req.body.primaryKey;
 });
 
 
-app.post('/answers',function(req, res) {
+app.post('/answers', multipartMiddleware,function(req, res) {
 
-  //console.log(req);
+  console.log(req);
 
 //     var responses = JSON.stringify(req.body.responses);
 
