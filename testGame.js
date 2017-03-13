@@ -443,8 +443,7 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
                     //console.log(fd.data)
                     
                   })
-                }
-              })
+               
 
             }
 
