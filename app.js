@@ -56,7 +56,7 @@ app.get('/', function (req, res) {
 app.post('/', multipartMiddleware, function(req, res) {
 
 
-
+console.log(req);
 var arr = (req.body.times).toString();
 var fbId = req.body.fbId;
 var primaryKey = req.body.primaryKey;
@@ -148,7 +148,7 @@ var primaryKey = req.body.primaryKey;
 
 app.post('/answers',function(req, res) {
 
-  console.log(req);
+  //console.log(req);
 
 //     var responses = JSON.stringify(req.body.responses);
 
