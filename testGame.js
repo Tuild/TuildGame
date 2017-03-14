@@ -440,7 +440,15 @@ function calculateReflexes(){
 
     if(imgToBeDisplayed>10){
 
+
+      var text1 = "You Play Like The Best There is NELSON CRUZ";
+      var text2 = "You Are Almost There, You Play Just Like DAVID ORTIZ";
+      var text3 = "A Few More Hits And You Will Be Unbeatable Just Like EDWIN ENCARNACION"
+      var text4 = "Gotta Put In a Lot More Hours To Reach Your Maximum Potential like PRINCE FIELDER";
+      var text5 = "Still A Long Way To Go Just Like ALEX RODRIGUEZ";
+
       imgToBeDisplayed = Math.floor(imgToBeDisplayed/10);
+      var dispText = "text"+imgToBeDisplayed;
 
       videotag.style.display = "none";
       document.getElementById('QuestionBlock').style.display = 'none';
@@ -450,6 +458,9 @@ function calculateReflexes(){
 
       document.getElementById('results').style.display = 'block';
       document.getElementById('finalResult').src = imgToBeDisplayed;
+      document.getElementById('dispText').innerHTML = dispText;
+
+      
 
 
 
