@@ -449,7 +449,7 @@ function calculateReflexes(){
       imgToBeDisplayed = imgToBeDisplayed+".jpg";
 
       document.getElementById('results').style.display = 'block';
-      document.getElementById('finalResult').src = imgToBeDisplayed+"jpg";
+      document.getElementById('finalResult').src = imgToBeDisplayed;
 
 
 
