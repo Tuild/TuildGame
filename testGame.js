@@ -441,33 +441,33 @@ function calculateReflexes(){
 
     if(imgToBeDisplayed>10){
 
-      var str;
+      // var str;
 
-      if(imgToBeDisplayed == 1){
+      // if(imgToBeDisplayed == 1){
 
-        str = "You Play Like The Best There is NELSON CRUZ";;
+      //   str = "You Play Like The Best There is NELSON CRUZ";;
 
-      }
-      else if(imgToBeDisplayed==2){
+      // }
+      // else if(imgToBeDisplayed==2){
 
-        str = "You Are Almost There, You Play Just Like DAVID ORTIZ";
+      //   str = "You Are Almost There, You Play Just Like DAVID ORTIZ";
 
-      }
-      else if(imgToBeDisplayed==3){
+      // }
+      // else if(imgToBeDisplayed==3){
 
-        str = "A Few More Hits And You Will Be Unbeatable Just Like EDWIN ENCARNACION";
+      //   str = "A Few More Hits And You Will Be Unbeatable Just Like EDWIN ENCARNACION";
         
-      }
-      else if(imgToBeDisplayed==4){
+      // }
+      // else if(imgToBeDisplayed==4){
 
-        str = "Gotta Put In a Lot More Hours To Reach Your Maximum Potential like PRINCE FIELDER";;
+      //   str = "Gotta Put In a Lot More Hours To Reach Your Maximum Potential like PRINCE FIELDER";;
         
-      }
-      else {
+      // }
+      // else {
 
-        str = "Still A Long Way To Go Just Like ALEX RODRIGUEZ";
+      //   str = "Still A Long Way To Go Just Like ALEX RODRIGUEZ";
         
-      }
+      // }
 
 
       
@@ -483,7 +483,7 @@ function calculateReflexes(){
 
       document.getElementById('results').style.display = 'block';
       document.getElementById('finalResult').src = imgToBeDisplayed;
-      document.getElementById('dispText').innerHTML = str;
+      // document.getElementById('dispText').innerHTML = str;
 
       
 
