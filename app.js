@@ -147,7 +147,7 @@ app.post('/answers', multipartMiddleware,function(req, res) {
 
 })
 
-res.send('everrything ran seemlessly1');
+res.sendStatus(200);
 });
 
 
@@ -173,7 +173,7 @@ function cropVideos(){
         console.log('error Croppring:');
 
     }).run();
-  
+
 }
 
 

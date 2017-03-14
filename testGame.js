@@ -421,12 +421,41 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
                     processData: false,
                     contentType: false
                   }).done(function(data) {
-                    //console.log(fd.data)
+                    
+                    calculateReflxes();
+
+
                     
                   })
                
 
             }
+
+
+
+
+function calculateReflexes(){
+
+    var imgToBeDisplayed = (noOfHits/noofBalls)*100;
+
+    if(imgToBeDisplayed>10){
+
+      imgToBeDisplayed = imgToBeDisplayed/10;
+
+      videotag.style.display = "none";
+      document.body.style.backgroundImage = "none";
+
+      imgToBeDisplayed = imgToBeDisplayed+".jpeg";
+
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('finalResult').src = "/"+imgToBeDisplayed;
+
+      
+
+    }
+
+
+}
 
 
 
