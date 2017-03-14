@@ -437,18 +437,43 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
 function calculateReflexes(){
 
     var imgToBeDisplayed = (noOfHits/noofBalls)*100;
+    imgToBeDisplayed = Math.floor(imgToBeDisplayed/10);
 
     if(imgToBeDisplayed>10){
 
+      var str;
 
-      var text1 = "You Play Like The Best There is NELSON CRUZ";
-      var text2 = "You Are Almost There, You Play Just Like DAVID ORTIZ";
-      var text3 = "A Few More Hits And You Will Be Unbeatable Just Like EDWIN ENCARNACION"
-      var text4 = "Gotta Put In a Lot More Hours To Reach Your Maximum Potential like PRINCE FIELDER";
-      var text5 = "Still A Long Way To Go Just Like ALEX RODRIGUEZ";
+      if(imgToBeDisplayed == 1){
 
-      imgToBeDisplayed = Math.floor(imgToBeDisplayed/10);
-      var dispText = "text"+imgToBeDisplayed;
+        str = "You Play Like The Best There is NELSON CRUZ";;
+
+      }
+      else if(imgToBeDisplayed==2){
+
+        str = "You Are Almost There, You Play Just Like DAVID ORTIZ";
+
+      }
+      else if(imgToBeDisplayed==3){
+
+        str = "A Few More Hits And You Will Be Unbeatable Just Like EDWIN ENCARNACION";
+        
+      }
+      else if(imgToBeDisplayed==4){
+
+        str = "Gotta Put In a Lot More Hours To Reach Your Maximum Potential like PRINCE FIELDER";;
+        
+      }
+      else {
+
+        str = "Still A Long Way To Go Just Like ALEX RODRIGUEZ";
+        
+      }
+
+
+      
+
+      
+     
 
       videotag.style.display = "none";
       document.getElementById('QuestionBlock').style.display = 'none';
@@ -458,7 +483,7 @@ function calculateReflexes(){
 
       document.getElementById('results').style.display = 'block';
       document.getElementById('finalResult').src = imgToBeDisplayed;
-      document.getElementById('dispText').innerHTML = dispText;
+      document.getElementById('dispText').innerHTML = str;
 
       
 
