@@ -422,7 +422,7 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
                     contentType: false
                   }).done(function(data) {
                     
-                    calculateReflxes();
+                    calculateReflexes();
 
 
                     
@@ -448,9 +448,9 @@ function calculateReflexes(){
       imgToBeDisplayed = imgToBeDisplayed+".jpeg";
 
       document.getElementById('results').style.display = 'block';
-      document.getElementById('finalResult').src = "/"+imgToBeDisplayed;
+      document.getElementById('finalResult').src = "http://i2.cdn.cnn.com/cnnnext/dam/assets/140111194127-alex-rodriguez-horizontal-large-gallery.jpg";
 
-      
+
 
     }
 
