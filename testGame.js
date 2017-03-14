@@ -440,12 +440,13 @@ function calculateReflexes(){
 
     if(imgToBeDisplayed>10){
 
-      imgToBeDisplayed = imgToBeDisplayed/10;
+      imgToBeDisplayed = Math.floor(imgToBeDisplayed/10);
 
       videotag.style.display = "none";
+      document.getElementById('QuestionBlock').style.display = 'none';
       //document.body.style.backgroundImage = "none";
 
-      imgToBeDisplayed = imgToBeDisplayed+".jpeg";
+      imgToBeDisplayed = imgToBeDisplayed+".jpg";
 
       document.getElementById('results').style.display = 'block';
       document.getElementById('finalResult').src = imgToBeDisplayed+"jpg";
