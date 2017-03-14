@@ -443,12 +443,12 @@ function calculateReflexes(){
       imgToBeDisplayed = imgToBeDisplayed/10;
 
       videotag.style.display = "none";
-      document.body.style.backgroundImage = "none";
+      //document.body.style.backgroundImage = "none";
 
       imgToBeDisplayed = imgToBeDisplayed+".jpeg";
 
       document.getElementById('results').style.display = 'block';
-      document.getElementById('finalResult').src = "http://i2.cdn.cnn.com/cnnnext/dam/assets/140111194127-alex-rodriguez-horizontal-large-gallery.jpg";
+      document.getElementById('finalResult').src = imgToBeDisplayed+"jpg";
 
 
 
