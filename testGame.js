@@ -349,7 +349,7 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
 
 function calculateReflexes(){
 
-    var imgToBeDisplayed = (noOfHits/noofBalls)*200;
+    var imgToBeDisplayed = (noOfHits/noofBalls)*100;
     if(imgToBeDisplayed>10){
       imgToBeDisplayed = Math.floor(imgToBeDisplayed/10);
       var dispText = "text"+imgToBeDisplayed;
