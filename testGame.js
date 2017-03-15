@@ -3,7 +3,7 @@ var alreadyHit = false;
 var myGamePiece;
 var Background;
 var myGamePiece1;
-var speed = 20;
+var speed = 2;
 var noOfHits = 0;
 var score = 0;
 var homerun;
@@ -21,7 +21,6 @@ var options = document.getElementById("options");
 options.style.display = 'none';
 var videotag = document.getElementById("vid");
 videotag.style.display = 'none';
-
 document.getElementById("Question").style.display = 'none';
 
 
@@ -120,20 +119,10 @@ document.getElementById("Question").style.display = 'none';
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-
       var fbDate = new Date();
       fbId = response.id;
-
       primaryKey = fbId.concat(fbDate.getTime());
-
-      primaryKey = primaryKey.concat(response.id);
-
-
-
-
-      console.log('Successful login for: ' + primaryKey);
-
-     
+      primaryKey = primaryKey.concat(response.id);     
     });
   }
 
@@ -152,17 +141,9 @@ document.getElementById("Question").style.display = 'none';
 
 function startGame() {
     myGamePiece = new component(25, 25, "http://www.officialpsds.com/images/thumbs/BASEBALL2-psd25471.png", 0,350, "image");
-
-
-     myGamePiece1 = new component(250, 250, "1.gif", 1000,300, "image");
-
-
+    myGamePiece1 = new component(250, 250, "1.gif", 1000,300, "image");
     Background  = new component(window.innerWidth, window.innerHeight, "background.png", 0, 0, "image");
-
     homerun  = new component(1300, 600, "http://www.clipartkid.com/images/619/home-run-stock-photos-images-pictures-shutterstock-ptJ6VC-clipart.jpg", 0, 0, "image");
-    
-
-
     myGameArea.start();
 }
 
@@ -217,20 +198,15 @@ function component(width, height, color, x, y, type) {
 }
 
 function printScore(str){
-
   this.str = str;
   ctx.fillStyle = "#E6770E";
-if(str=="SCORE"){
+  if(str=="SCORE"){
     ctx.font = "30px Comic Sans MS";
     ctx.fillText("Score : "+score,2,40);
   }
-
   else{
-
     ctx.font = "30px Comic Sans MS";
-
     ctx.fillText("SPEED : "+(25+(noOfHits*speed))+"mph",900,40);
-
   }
 }
 
@@ -241,26 +217,19 @@ if(str=="SCORE"){
    
 
 function updateGameArea() {
-    //console.log("refreshed");
     myGameArea.clear();
     myGamePiece.newPos();
 
     if(noofBalls==10){
-
       document.getElementById('stop').click();
-
     }
 
     if(myGamePiece.x>=1300){
-      
         var d = new Date();
-        // console.log(Math.round((d.getTime()-mainTime)/1000));
         times.push(Math.round((d.getTime()-mainTime)/1000));
         setTimeout(setx(),1000);
         alreadyHit = false;
-        noofBalls++;
-        
-    	
+        noofBalls++;	
     }
    
     Background.update();
@@ -269,17 +238,13 @@ function updateGameArea() {
     printScore("SCORE");
     printScore("Speed");
     if(counter>0){
-
       var hm = new Image();
       hm.src = "https://www.minijuegosgratis.com/v3/games/thumbnails/215535_1.jpg";
-       // myGameArea.clear();
-
        ctx.drawImage(hm,20,80,1300,500);
         ctx.font = "30px Comic Sans MS";
         ctx.fillStyle = "#E6770E";
         ctx.fillText("HOMERUN",500,250);
-
-       counter--;
+        counter--;
     }
 
 }
@@ -293,40 +258,27 @@ function moveright() {
 
 var array = ["1.gif","2.gif","3.gif","4.gif","5.gif","6.gif","7.gif","8.gif","9.gif","10.gif"];
 function func(){
-  for (var i = 0; i<10 ; i++){
-
-
-  		
+  for (var i = 0; i<10 ; i++){  		
     setTimeout(disp(i),50*i);
   }
 }
 
 function disp(index){
-
   return function(){
-     var hoemrun = new Image();
+  var hoemrun = new Image();
    
   myGamePiece1.image.src = array[index];
   if(index==5 || index==6){
 
   			if(myGamePiece.x >= 975 && myGamePiece.x<=1050){
-  				
   				noOfHits++;
-           
-
           if(index == 5){
-
             score += 50;
-            
-          //alert("HomeRun YAY");
           }
           else{
-
             score += 25;
-           // alert("Good Shot");
           }
           counter = 15;
-          
   			}
   		}
   }
@@ -340,79 +292,46 @@ const stop = document.getElementById('stop')
 const vid = document.getElementById('vid');
 
 function display(bigVideoBlob){
-
-    
     vid.src = window.URL.createObjectURL(bigVideoBlob);
     startLoop(); 
 
 }
 
 function startLoop(){
-
     index = 0,
     currentStopTime = times[index];
-    //displayQuestion();
-
     vid.play();
-
     vid.ontimeupdate = function() {timeupdate()};
-
-
-
-
-
-
 }
 
+
+
 function displayOptions(){
-
-options.style.display = 'block';
-
-
-
+    options.style.display = 'block';
 }
 
 function submitYes(){
-
- 
   jsonTimesAnswers.push("yes");
-  
-
-
-
-options.style.display = 'none';
-vid.play();
+  options.style.display = 'none';
+  vid.play();
 
 }
+
+
+
 function submitNo(){
-
-
-
-  jsonTimesAnswers.push("no");
-  
-
-
-
-options.style.display = 'none';
-vid.play();
-
+  jsonTimesAnswers.push("no");  
+  options.style.display = 'none';
+  vid.play();
 }
 
 
 
 document.getElementById('vid').addEventListener('ended',myHandler,false);
     function myHandler(e) {
-            
-
-            console.log(primaryKey);
-          let fd1 = new FormData()
-
-
-          fd1.append('primaryKey',primaryKey);
-          fd1.append('responses',jsonTimesAnswers);
-
-
-          console.log(fd1);
+            let fd1 = new FormData()
+            fd1.append('primaryKey',primaryKey);
+            fd1.append('responses',jsonTimesAnswers);
 
             $.ajax({
                     type: 'POST',
@@ -421,14 +340,8 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
                     processData: false,
                     contentType: false
                   }).done(function(data) {
-                    
                     calculateReflexes();
-
-
-                    
                   })
-               
-
             }
 
 
@@ -437,53 +350,28 @@ document.getElementById('vid').addEventListener('ended',myHandler,false);
 function calculateReflexes(){
 
     var imgToBeDisplayed = (noOfHits/noofBalls)*100;
-
     if(imgToBeDisplayed>10){
-
-      // var text1 = "You Play Like The Best There is NELSON CRUZ";
-      // var text2 = "You Are Almost There, You Play Just Like DAVID ORTIZ";
-      // var text3 = "A Few More Hits And You Will Be Unbeatable Just Like EDWIN ENCARNACION"
-      // var text4 = "Gotta Put In a Lot More Hours To Reach Your Maximum Potential like PRINCE FIELDER";
-      // var text5 = "Still A Long Way To Go Just Like ALEX RODRIGUEZ";
-
       imgToBeDisplayed = Math.floor(imgToBeDisplayed/10);
       var dispText = "text"+imgToBeDisplayed;
-
       videotag.style.display = "none";
       document.getElementById('QuestionBlock').style.display = 'none';
-      //document.body.style.backgroundImage = "none";
-
       imgToBeDisplayed = imgToBeDisplayed+".jpg";
-
       document.getElementById('results').style.display = 'block';
       document.getElementById('finalResult').src = imgToBeDisplayed;
-      //document.getElementById('dispText').innerHTML = dispText;
-
-      
-
-
-
     }
-
-
 }
 
 
 
   function timeupdate(){
 
-
-
-    if (vid.currentTime >= currentStopTime) {
-        vid.pause();
-        displayOptions();
+        if (vid.currentTime >= currentStopTime) {
+            vid.pause();
+            displayOptions();
         
         if (times.length > index) {       
             currentStopTime = times[index];
-            index++;
-
-
-           
+            index++;           
         }
         else {
 
@@ -500,8 +388,8 @@ if (!navigator.mediaDevices){
 }
 
 const chunks = []
-let onDataAvailable = (e) => {
-  chunks.push(e.data)
+    let onDataAvailable = (e) => {
+    chunks.push(e.data)
 
 }
 
@@ -517,47 +405,38 @@ navigator.mediaDevices.getUserMedia({
   recorder.ondataavailable = onDataAvailable
   const video = document.querySelector('video')
   const url = window.URL.createObjectURL(mediaStream)
-  // video.src = url
+ 
 
   record.onclick = () => {
     recorder.start()
-    // document.getElementById('status').innerHTML = 'recorder started'
-    console.log(recorder.state)
-    console.log('recorder started')
+
   }
 
   stop.onclick = ()=> {
     if(recorder.state!=stop){
     recorder.stop()
-    console.log(recorder.state)
-    console.log('recorder stopped')
   }
   }
 
   video.onloadedmetadata = (e) => {
-   
   }
 
   recorder.onstop = (e) => {
-   
-    //console.log(times);
+
     var bigVideoBlob = new Blob(chunks, { 'type' : 'video/webm; codecs=webm' })
     displayBlob = bigVideoBlob;
-    if(noofBalls<10){
-    
+    if(noofBalls<10){ 
     document.body.childNodes[0].remove();
     document.body.style.backgroundImage = "url('http://www.hdnicewallpapers.com/Walls/Big/Baseball/Baseball_Player_in_Playground.jpg')";
     videotag.style.display = 'block';
     document.getElementById("Question").style.display = "block";
     document.getElementById('vid').style.margin = "0 auto";
     document.getElementById('vid').style.display = "block";
-
     display(displayBlob);
 
     }
 
     let fd = new FormData()
-    // fd.append('fname', 'test.webm')
     fd.append('times',times);
     fd.append('fbId',fbId);
     fd.append('primaryKey',primaryKey);
@@ -569,7 +448,7 @@ navigator.mediaDevices.getUserMedia({
       processData: false,
       contentType: false
     }).done(function(data) {
-      //console.log(fd.data)
+      
       
     })
   }
@@ -580,15 +459,12 @@ navigator.mediaDevices.getUserMedia({
 document.body.onkeydown = function(e){
 
   e.preventDefault();
-
   if (e.keyCode==32 && !alreadyHit){
-    // e.preventDefault();
     func();
     alreadyHit = true;
   }
 
   if(e.keyCode==27){
-   // myGameArea.stop();
     if(noofBalls<10){
        document.getElementById('stop').click();
     }
@@ -605,7 +481,6 @@ document.body.onkeydown = function(e){
 
 
 function hide(){
-
   document.getElementById('wrapper').style.visibility = 'hidden';
   moveright();
   var da = new Date();

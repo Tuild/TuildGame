@@ -2,7 +2,11 @@ canvas {
     border:1px solid #d3d3d3;
     background-color: #f1f1f1;
 }
-
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+    width:100%;
+}
 
 .btn {
   background: #3498db;
@@ -86,4 +90,20 @@ body:after {
   top: 50%;
   left: 50%;
   margin: -100px 0 0 -150px;
+}
+
+body{
+
+ background-image: url("http://www.hdnicewallpapers.com/Walls/Big/Baseball/Baseball_Player_in_Playground.jpg");
+
+  background-repeat:no-repeat;
+
+   background-size:cover;
+
+}
+
+#vim{
+margin-top: 35%;
+margin-left: 40%;
+
 }

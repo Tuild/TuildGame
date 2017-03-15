@@ -13,14 +13,9 @@ var mysql = require('mysql')
 var config = ('./config')
 app.use(express.static('.'))
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-
-
 var aws = require('aws-sdk');
-
 var s3 = new aws.S3();
 var location;
-
-
 var pool = mysql.createPool({
 
 
@@ -100,26 +95,11 @@ var primaryKey = req.body.primaryKey;
   });
 
     pool.getConnection(function(err,connection){
-
-
       connection.query('INSERT into uploads (uniqueID,fb_id,video_file_url,times_array) VALUES (?,?,?,?)',[primaryKey,fbId,primaryKey+".webm",arr], function(err, rows, fields) {
-  
-
-  connection.release();
-
+      connection.release();
 
 });
-
-
 })
-
-
-
-
-
-   
-
-   console.log("everrything ran seemlessly");
    res.send('everrything ran seemlessly');
 
 
@@ -150,7 +130,7 @@ app.post('/answers', multipartMiddleware,function(req, res) {
 res.sendStatus(200);
 });
 
-
+// function to crop videos
 function cropVideos(){
 
     ffmpeg(req.files.data.path) //Input Video File
@@ -162,10 +142,7 @@ function cropVideos(){
     .on('end', function(err) {
         if(!err)
         {
-
             console.log("Conversion Done");
-            
-
         }
 
     })
